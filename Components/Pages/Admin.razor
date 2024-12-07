@@ -1,0 +1,194 @@
+﻿@page "/admin"
+@rendermode InteractiveServer
+@using MLC.Services
+@using MLC.Models
+@using System.Globalization;
+@using System;
+@using System.IO;
+@using System.Net;
+@using System.Net.Http;
+@using System.Collections.Generic;
+@using CsvHelper;
+@using CsvHelper.Configuration;
+
+@inject IPMTSVC PMT
+@inject IJSRuntime JSRuntime
+@inject IPCFileSVC PC
+
+<script src="js/file-utils.js"></script>
+<PageTitle>Admin</PageTitle>
+
+<h1>Process Payment</h1>
+
+<div>
+    <button @onclick="() => BMOFile()">Create BMO File</button>
+    <button @onclick="() => PCFile()">Create PC File</button>
+</div>
+@if (PaymentDS != null && PaymentDS.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Memo</th>
+                <th>File</th>
+                <th>Amount</th>
+                <th>Tax</th>
+                <th>Account</th>
+                <th>Approve</th>
+                <th>Approved</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in PaymentDS)
+            {
+                <tr>
+                    <td>@payment.Date?.ToString("MMM dd yyyy")</td>
+                    <td>@payment.Memo</td>
+                    <td><a href="_receipts/@payment.Filename">View File</a></td>
+                    <td>@payment.Amount?.ToString("C")</td>
+                    <td>
+                        @if(payment.Tax == false)
+                        {
+                            <span></span>
+                        }
+                        else
+                        {
+                            <span>&#x2714;</span> <!-- This is a checked checkmark -->
+                        }
+
+
+                    </td>
+                    <td>@payment.Account</td>
+                    <td>
+                        <button @onclick="() => ApprovePayment(payment.Id)">Approve</button>
+                    </td>
+                    <td>
+                        @if (payment.ApprovedBy != null)
+                        {
+                            <span>&#x2714;</span> <!-- This is a checked checkmark -->
+                        }
+                        else
+                        {
+                            <span></span> <!-- This is an unchecked checkmark -->
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No payments found.</p>
+}
+
+<div>
+    @SaveMessage
+</div>
+               
+@code
+{
+
+    public IEnumerable<TblPayment>? PaymentDS { get; set; }
+
+    private string? SaveMessage { get; set; }
+
+    // Creates an instance of the JulianCalendar.
+    JulianCalendar myCal = new JulianCalendar();
+
+    // Load Account list on initializing
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        PaymentDS = new List<TblPayment>(PMT.GetList());
+    }
+
+    // function to search for user name 
+
+    public void ApprovePayment(int id)
+    {
+        SaveMessage = PMT.ApprovePayment(id,"A");
+        OnInitialized();
+    }
+
+    public async Task PCFile()
+    {
+        {
+            // get data 
+
+            var data = new List<PCFile>(PC.GetData(33));
+
+            // Create a memory stream
+            using var memStream = new MemoryStream();
+
+            // Create a CSV writer with custom configuration
+            var csvConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
+            using var csvWriter = new CsvWriter(new StreamWriter(memStream), csvConfig);
+            csvWriter.WriteRecords(data); // Write data rows
+
+            // Flush the writer and reset the position of the memory stream
+            csvWriter.Flush();
+            memStream.Position = 0;
+
+            // Read the CSV content from the memory stream
+            using var reader = new StreamReader(memStream);
+            var csvContent = reader.ReadToEnd();
+
+            // Create an HTTP response with the CSV content
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            response.Content = new StringContent(csvContent);
+            response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/csv");
+            response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
+                {
+                    FileName = "MyCsvFile.csv"
+                };
+
+            // Return the response
+            await JSRuntime.InvokeAsync<object>("saveFile", "MyCsvFile.csv", csvContent);
+
+        }
+    }
+
+
+    public async Task BMOFile()
+    {
+        // Variables header
+
+        var Sender = "MartinLutherCH";
+        var ASA = "MLC";
+        var FCN = "0001";
+        DateTime dt = DateTime.Now;
+        var ProcessDate = dt.ToString("yy") + myCal.GetDayOfYear(dt).ToString("D3");
+        var Dest = "12311";
+        var Curr = "CAD";
+
+        // Create a memory stream
+
+        using var memStream = new MemoryStream();
+
+        // header record
+
+        string header = String.Format("{0,1}{1,9}{2,10}{3,4}{4,6}{5,5}{6,20}{7,3}{8,1406}", "A", "000000001", ASA, FCN, ProcessDate ,Dest,"",Curr,"");
+
+        // transaction details
+
+        //string detils = string.Format();
+        // Create an HTTP response with the CSV content
+
+        var response = new HttpResponseMessage(HttpStatusCode.OK);
+        response.Content = new StringContent(header);
+        response.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("text/csv");
+        response.Content.Headers.ContentDisposition = new System.Net.Http.Headers.ContentDispositionHeaderValue("attachment")
+            {
+                FileName = "BMO.txt"
+            };
+
+        // Return the response
+        await JSRuntime.InvokeAsync<object>("saveFile", "BMO.txt", header);
+    }
+}
+
+
+

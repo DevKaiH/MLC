@@ -1,0 +1,242 @@
+﻿@page "/payments"
+@rendermode InteractiveServer
+@using MLC.Services
+@using MLC.Models
+@using System.Globalization;
+@inject IAccountSVC Accounts
+@inject IUserSVC Users
+@inject IPMTSVC PMT
+
+<PageTitle>Payments</PageTitle>
+
+<h1>Enter Payment</h1>
+
+<div class="mb-3">
+    <label for="findUser" class="form-label">Recipient</label>
+    <div class="row">
+        <div class="col-sm-4">
+
+            <DxComboBox TData="VRecipient"
+                        TValue="VRecipient"
+                        Data="userDS"
+                        TextFieldName="@(nameof(VRecipient.Recipients))"
+                        NullText="Select Recipient..."
+                        Value="userProfile"
+                        ValueChanged="@((VRecipient selectedValue) => PersonSelected(selectedValue))"
+                        FilteringMode="DataGridFilteringMode.Contains" />                       
+
+
+        </div>
+       
+    </div>
+</div>
+
+<EditForm Model="NewPayment" OnValidSubmit="SavePMT">
+
+<DataAnnotationsValidator />
+
+<div class="col-sm-5">
+
+        <label for="selectAccount" class="form-label">Select Account</label>
+
+        <DxComboBox TData="TblAccount"
+                    TValue="TblAccount"
+                    Data="AccountDS"
+                    TextFieldName="@(nameof(TblAccount.Description))"
+                    NullText="Select Account..."
+                    Value="SelAcct"    
+                    ValueExpression="@( () => SelAcct )"
+                    TextExpression="@( () => SelAcct.Description )"
+                    FilteringMode="DataGridFilteringMode.Contains" />      
+
+        <ValidationMessage For="@(() => NewPayment.Account)" />
+
+</div>
+<div class="col-sm-5">
+        <label for="memo" class="form-label">Memo</label>
+        <input type="text" class="form-control" id="Memo" @bind-value="@NewPayment.Memo"/>
+        <ValidationMessage For="@(() => NewPayment.Memo)" />
+</div>
+ <div class="col-sm-5">
+        <label for="amount" class="form-label">Amount</label>
+    <input type="text" class="form-control" id="amount" @bind-value="@NewPayment.Amount">
+        <ValidationMessage For="@(() => NewPayment.Amount)" />
+ </div>
+    <div class="col-sm-5">
+        <label for="tax" class="form-label">Tax</label>
+        <input type="checkbox" class="form-control" id="tax" @bind-value="@NewPayment.Tax">
+        <ValidationMessage For="@(() => NewPayment.Tax)" />
+    </div>
+    <div class="col-sm-5">
+        <label for="FileUpload" class="form-label">Upload Receipt</label>
+    <InputFile class="form-control" id="FileUpload" OnChange="@uploadReceipt" />
+        <ValidationMessage For="@(() => NewPayment.Filename)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</EditForm>
+
+@if (PaymentDS != null && PaymentDS.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Memo</th>
+                <th>File</th>
+                <th>Amount</th>
+                <th>Tax</th>
+                <th>Account</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in PaymentDS)
+            {
+                <tr>
+                    <td>@payment.Date?.ToString("MMM dd yyyy")</td>
+                    <td>@payment.Memo</td>
+                    <td><a href="_receipts/@payment.Filename">View File</a></td>
+                    <td>@payment.Amount?.ToString("C")</td>
+                    @if (payment.Tax == false)
+                    {
+                        <span></span>
+                    }
+                    else
+                    {
+                        <span>&#x2714;</span> <!-- This is a checked checkmark -->
+                    }
+                    <td>@payment.Account</td>
+                    <td>
+                        <button @onclick="() => DeletePayment(payment.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No payments found.</p>
+}
+
+<div>
+    @SaveMessage
+</div>
+               
+@code
+{
+    public IEnumerable<TblAccount>?AccountDS { get; set; }
+    public IEnumerable<VRecipient>?userDS { get; set; }
+    public IEnumerable<TblPayment>? PaymentDS { get; set; }
+    List<ListItem> Person = new List<ListItem>();
+    private TblPayment NewPayment = new TblPayment();
+    private VRecipient userProfile = new VRecipient();
+    private string? SaveMessage { get; set; }
+    public string?searchUser { get; set; }
+    public string? Filename { get; set; }
+    private VRecipient SelectedPerson;
+    private TblAccount SelAcct;
+
+    // Load Account list on initializing
+
+    public class RecipientViewModel
+    {
+        public string FullName { get; set; }
+        public TblRecipient OriginalRecipient { get; set; }
+    }
+
+    public List<RecipientViewModel> GetRecipientViewModels(List<TblRecipient> recipients)
+    {
+        return recipients.Select(r => new RecipientViewModel
+            {
+                FullName = $"{r.FirstName} {r.LastName}",
+                OriginalRecipient = r
+            }).ToList();
+    }
+    private List<RecipientViewModel> recipientViewModels;
+    private RecipientViewModel selectedRecipient;       
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        AccountDS = Accounts.GetAccounts(); 
+        userDS = Users.getUsers();
+       
+    }
+
+    // function to search for user name 
+
+    private void findUser()
+    {      
+        foreach (var person in userDS)
+        {
+            Person.Add(new ListItem
+                {
+                    Id = person.Id,
+                    ItemText = person.FirstName + " " + person.LastName,
+                    ItemData = person.Email
+                });
+        }
+
+        // If only one user is found, select this user
+
+        if(userDS.Count() == 1)
+        {
+            NewPayment.UserId = userDS.FirstOrDefault().Id;
+        }
+    }
+
+    // task to upload file to application directory
+
+    public async Task uploadReceipt(InputFileChangeEventArgs e)
+    {
+        int dotFromEnd = e.File.Name.Length - e.File.Name.IndexOf(".");
+        string suffix = e.File.Name.Substring(e.File.Name.Length - dotFromEnd, dotFromEnd);
+        Filename = Guid.NewGuid().ToString() + suffix;
+        string appRoot = AppDomain.CurrentDomain.BaseDirectory;
+        string filepath = Path.Combine(appRoot, "_receipts", Filename).Replace("\\bin\\Debug\\net7.0\\", "\\wwwroot\\");
+        await using FileStream fs = new FileStream(filepath, FileMode.Create);
+        await e.File.OpenReadStream().CopyToAsync(fs);
+        NewPayment.Filename = Filename;
+    } 
+
+    // function to retrieve selected account
+
+    private void GetAccount(ChangeEventArgs e)
+    {
+        NewPayment.Account = Convert.ToString(e.Value);
+    }
+
+    // Save new payment request
+
+    public void SavePMT()
+    {
+        NewPayment.UserId = SelectedPerson.Id;
+        SaveMessage = PMT.AddPayment(NewPayment);
+
+        // Clear objects
+
+        searchUser = null;
+        userDS = new List<VRecipient>();
+        SelectedPerson = null;
+        NewPayment = new TblPayment();
+        Person.Clear();
+    }
+
+    // function to retrieve selected person
+
+    public void PersonSelected(VRecipient Person)
+    {
+        SelectedPerson = Person;
+
+        // get payments entered
+
+        PaymentDS = new List<TblPayment>(PMT.FindPayment(SelectedPerson.Id));
+    }
+    public void DeletePayment(int id)
+    {
+        SaveMessage = PMT.DeletePayment(id);
+    }
+}
+
+
+

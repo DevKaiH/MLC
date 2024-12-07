@@ -1,0 +1,28 @@
+﻿﻿<div id="sidebar">         
+    <DxMenu Orientation="@Orientation.Vertical" CssClass="menu display-mobile">
+        <Items>
+            <AuthorizeView>
+                <Authorized>
+                    <DxMenuItem NavigateUrl="Account/Manage" Text="@context.User.Identity?.Name" CssClass="menu-item" IconCssClass="icon user-icon"></DxMenuItem>
+                    <DxMenuItem NavigateUrl="Account/Logout" Text="Log out" CssClass="menu-item" IconCssClass="icon log-out-icon"></DxMenuItem>
+                </Authorized>
+                <NotAuthorized>
+                    <DxMenuItem NavigateUrl="Account/Login" Text="Log in" CssClass="menu-item" IconCssClass="icon log-in-icon"></DxMenuItem>
+                </NotAuthorized>
+            </AuthorizeView>
+        </Items>
+    </DxMenu>                                  
+    <DxMenu Orientation="@Orientation.Vertical" CssClass="menu">
+        <Items>
+            <DxMenuItem NavigateUrl="/" Text="Home" CssClass="menu-item" IconCssClass="icon home-icon"></DxMenuItem>
+            <DxMenuItem NavigateUrl="/payments" Text="Payments" CssClass="menu-item" IconCssClass="icon counter-icon"></DxMenuItem>
+            <DxMenuItem NavigateUrl="/admin" Text="Administration" CssClass="menu-item" IconCssClass="icon weather-icon"></DxMenuItem>                                    
+            <DxMenuItem NavigateUrl="@UrlGenerator.GetUrl("Account/Manage", ToggledSidebar)" Text="Settings" CssClass="menu-item" IconCssClass="icon settings-icon"></DxMenuItem>
+        </Items>
+    </DxMenu>
+</div>
+
+@code {
+    [SupplyParameterFromQuery(Name = UrlGenerator.ToggleSidebarName)]
+    public bool ToggledSidebar { get; set; }
+}

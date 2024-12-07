@@ -1,0 +1,48 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using Microsoft.Data.SqlClient;
+@using System;
+@using System.Data.SqlClient;
+@using System.Data;
+@using System.Diagnostics;
+<PageTitle>Index</PageTitle>
+
+<h1>Hello MLC!</h1>
+<DxButton Click="Test">GetData</DxButton>
+@code
+{
+    public void Test()
+    {
+        string connectionString = "Data Source=(LocalDB)\\ProjectModels;Database=MLCData;";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            try
+            {
+                connection.Open();
+                Debug.WriteLine("Connection successful!");
+
+                string query = "SELECT * FROM tblaccounts";
+                SqlCommand command = new SqlCommand(query, connection);
+                SqlDataReader reader = command.ExecuteReader();
+
+                
+                while (reader.Read())
+                {
+                    try
+                    {
+                        Debug.WriteLine($"Account: {reader["Acct"]}, Description: {reader["Description"]}");
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        Debug.WriteLine($"Column not found: {ex.Message}");
+                    }
+                }
+            }
+                       
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"General Error: {ex.Message}");
+            }
+        }
+    }
+}
