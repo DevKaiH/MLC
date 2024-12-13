@@ -185,3 +185,4 @@ C:\Users\kaih\source\repos\MLC\obj\Debug\net8.0\refint\MLC.dll
 C:\Users\kaih\source\repos\MLC\obj\Debug\net8.0\MLC.pdb
 C:\Users\kaih\source\repos\MLC\obj\Debug\net8.0\MLC.genruntimeconfig.cache
 C:\Users\kaih\source\repos\MLC\obj\Debug\net8.0\ref\MLC.dll
+C:\Users\kaih\source\repos\mlc\obj\Debug\net8.0\MLC.sourcelink.json
