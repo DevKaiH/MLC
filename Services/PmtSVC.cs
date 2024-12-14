@@ -6,11 +6,11 @@ namespace MLC.Services
 {
     public interface IPMTSVC
     {
-        IEnumerable<TblPayment> FindPayment(int UserID);
+        IEnumerable<TblPayment> FindPayment(int RecID);
         IEnumerable<TblPayment> GetList();
         public string AddPayment(TblPayment payment);
         public string UpdatePayment(TblPayment payment);
-        public string DeletePayment(int id);
+        public string DeletePayment(TblPayment delpmt);
         public string ApprovePayment(int id, string m);
 
     }
@@ -26,9 +26,9 @@ namespace MLC.Services
         {
             return _context.TblPayments;
         }
-        public IEnumerable<TblPayment> FindPayment(int UserID)
+        public IEnumerable<TblPayment> FindPayment(int RecID)
         {
-            return _context.TblPayments.Where(p => p.UserId == UserID);
+            return _context.TblPayments.Where(p => p.RecipientId == RecID);
         }
         public string AddPayment(TblPayment payment)
         {
@@ -53,7 +53,7 @@ namespace MLC.Services
                 {
                     _context.Entry(local).State = EntityState.Detached;
 
-                    local.UserId= payment.UserId;
+                    local.RecipientId= payment.RecipientId;
                     local.Date = payment.Date;
                     local.Memo = payment.Memo;
                     local.ApproveDate = payment.ApproveDate;
@@ -78,21 +78,15 @@ namespace MLC.Services
                 return ex.ToString();
             }
         }
-        public string DeletePayment(int id)
+        public string DeletePayment(TblPayment delpmt)
         {
             try
-            {
-                var paymentToDelete = _context.TblPayments.Find(id);
-                if (paymentToDelete != null)
-                {
-                    _context.TblPayments.Remove(paymentToDelete);
+            {              
+               
+                    _context.TblPayments.Remove(delpmt);
                     _context.SaveChanges();
                     return "Payment request was deleted!";
-                }
-                else
-                {
-                    return "Payment with the specified ID was not found.";
-                }
+              
             }
             catch (Exception ex)
             {

@@ -15,5 +15,5 @@ public partial class TblEftlog
 
     public int? Status { get; set; }
 
-    public int? UserId { get; set; }
+    public string? UserName { get; set; }
 }

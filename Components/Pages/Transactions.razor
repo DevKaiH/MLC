@@ -1,0 +1,207 @@
+﻿@page "/transactions"
+@rendermode InteractiveServer
+@using MLC.Services
+@using MLC.Models
+@using System.Globalization;
+@inject IAccountSVC Accounts
+@inject ITRANSSVC Trans
+
+<PageTitle>Transactions</PageTitle>
+
+<h1>Enter Expenses</h1>
+
+<DxFormLayout>
+        <DxFormLayoutItem Caption="Account">
+        <DxComboBox TData="TblAccount"
+                    TValue="TblAccount"
+                    Data="AccountDS"
+                    TextFieldName="@(nameof(TblAccount.Description))"
+                    NullText="Select Account..."
+                    Value="SelAcct"
+                    ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
+                    ValueExpression="@( () => SelAcct )"
+                    TextExpression="@( () => SelAcct.Description )"
+                    FilteringMode="DataGridFilteringMode.Contains" />
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Memo">
+        <DxTextBox @bind-Text="@NewTrans.Memo" />
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Amount">
+        <DxSpinEdit ValueChanged="@((decimal amtent) => AmtEntered(amtent))"
+                    Mask="@NumericMask.Currency"
+                    Increment="100"
+                    CssClass="cw-320"
+                    InputId="seMask">
+            <DxNumericMaskProperties Culture="@Culture" />
+        </DxSpinEdit>
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Tax">
+        <DxCheckBox @bind-Checked="@NewTrans.Tax" />
+    </DxFormLayoutItem>
+    <DxFormLayoutItem Caption="Upload Receipt">
+        <div class="upload-container">
+            <div style="@(SelectedFilesCount > 0 ? "display: none" : string.Empty)">
+                <span class="drop-file-icon mb-3"></span>
+                <span class="drop-file-label mb-3">Click the Select File button to select files</span>
+            </div>
+            <DxFileInput AllowMultiFileUpload="true"
+                         SelectedFilesChanged="@SelectedFilesChanged"
+                         MaxFileSize="15000000"
+                         FilesUploading="OnFilesUploading">
+            </DxFileInput>
+        </div>
+    </DxFormLayoutItem>
+</DxFormLayout>
+
+
+<DxGrid Data="TransDS" DataItemDeleting="DeleteTransaction" ColumnResizeMode="GridColumnResizeMode.ColumnsContainer" TextWrapEnabled=true>
+    
+    <Columns>
+        <DxGridDataColumn FieldName="Transactiondate"/>
+        <DxGridDataColumn FieldName="Memo" />
+        <DxGridDataColumn FieldName="Amount" DisplayFormat="$ #,###.00" />
+        <DxGridDataColumn FieldName="Tax" />
+        <DxGridCommandColumn VisibleIndex="5" EditButtonVisible="false" NewButtonVisible="false" />
+    </Columns>
+
+</DxGrid>
+
+<DxButton Enabled="DataComplete" Click="SavePMT">Submit</DxButton>
+
+<DxPopup Visible="@popup" HeaderText="@popheader" Closing="warningClosed">
+
+    <BodyContentTemplate>
+
+        <p>@Message</p>
+
+    </BodyContentTemplate>
+
+</DxPopup>
+
+@code
+{
+    public IEnumerable<TblAccount>?AccountDS { get; set; }
+    public IEnumerable<TblTransaction>? TransDS { get; set; }
+    bool DataComplete = false;
+    bool popup = false;
+    string popheader { get; set; }
+    int SelectedFilesCount { get; set; }
+    string Memo { get; set; }
+    decimal amt { get; set; }
+    private TblTransaction NewTrans = new TblTransaction();
+    private string? Message { get; set; }
+    public string? Filename { get; set; }
+    private VRecipient SelectedPerson;
+    private TblAccount SelAcct;
+    private System.Timers.Timer _timer;
+    CultureInfo Culture = CultureInfo.GetCultureInfo("en-US");
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        AccountDS = Accounts.GetAccounts();
+        Reloadgrid();
+    }  
+    private async Task startTimer()
+    {
+        _timer = new System.Timers.Timer(2000); // 2 seconds
+        _timer.Elapsed += TimerElapsed;
+        _timer.AutoReset = false; // Only fire once
+        _timer.Start();
+    }
+    private void TimerElapsed(object sender, System.Timers.ElapsedEventArgs e)
+    {
+        InvokeAsync(() =>
+     {
+         warningClosed();
+         StateHasChanged();
+     });
+
+    }
+    // Save new payment request
+
+    public void SavePMT()
+    {
+        NewTrans.Account = SelAcct.Acct;       
+        NewTrans.Transactiondate = DateTime.Now; 
+        Message = Trans.AddTransaction(NewTrans);
+        Reloadgrid();
+        popheader = "Payment Saved";
+        popup = true;
+        startTimer();
+
+        // Clear objects
+
+        NewTrans = new TblTransaction();       
+    }
+    public void Reloadgrid()
+    {
+        TransDS = new List<TblTransaction>(Trans.GetList());
+    }
+    public void PersonSelected(VRecipient Person)
+    {
+        SelectedPerson = Person;
+
+        Reloadgrid();
+    }
+    public void warningClosed()
+    {
+        popup = false;
+        return;       
+    }
+    public void AmtEntered(decimal amt)
+    {
+        NewTrans.Amount = amt;
+        DataComplete = true;
+    }
+    public void AcctSelected(TblAccount acct)
+    {
+        SelAcct = acct;
+    }
+    async Task DeleteTransaction(GridDataItemDeletingEventArgs e)
+    {
+        if (e.DataItem is MLC.Models.TblTransaction transrec)
+        {
+            var deltrx = new TblPayment
+                {
+                    Id = transrec.Id
+                };
+
+            // Delete selected payment record
+
+            Trans.DeleteTransaction(transrec);
+
+            // reload grid
+
+            Reloadgrid();
+        }
+    }
+    // count files to be uploaded
+
+    protected void SelectedFilesChanged(IEnumerable<UploadFileInfo> files)
+    {
+        SelectedFilesCount = files.ToList().Count;
+        InvokeAsync(StateHasChanged);       
+    }
+    // upload files and insert file name into table
+
+    protected async Task OnFilesUploading(FilesUploadingEventArgs args)
+    {
+        foreach (var file in args.Files)
+        {
+            int dotFromEnd = file.Name.Length - file.Name.IndexOf(".");
+            string suffix = file.Name.Substring(file.Name.Length - dotFromEnd, dotFromEnd);
+            Filename = Guid.NewGuid().ToString() + suffix;
+            string appRoot = AppDomain.CurrentDomain.BaseDirectory;
+            string filepath = Path.Combine(appRoot, "_receipts", Filename).Replace("\\bin\\Debug\\net7.0\\", "\\wwwroot\\");
+            await using FileStream fs = new FileStream(filepath, FileMode.Create);
+            await file.OpenReadStream().CopyToAsync(fs);
+            NewTrans.Filename = Filename;
+            using var stream = new System.IO.MemoryStream();
+            await file.OpenReadStream(file.Size).CopyToAsync(stream);
+        }
+    }
+}
+
+
+
