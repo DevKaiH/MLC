@@ -17,10 +17,14 @@ public partial class TblTransaction
 
     public string? Account { get; set; }
 
+    public string? Bankaccount { get; set; }
+
     public string? Filename { get; set; }
 
     public string? AddUser { get; set; }
 
     public int? LogID { get; set; }
+
+    public bool Detailrecord { get; set; }
 
 }

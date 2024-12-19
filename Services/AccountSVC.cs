@@ -5,7 +5,7 @@ namespace MLC.Services
 {
     public interface IAccountSVC
     {
-        IEnumerable<TblAccount> GetAccounts(); 
+        IEnumerable<TblAccount> GetAccounts(string type); 
     }
     public class AccountSVC : IAccountSVC
     {
@@ -14,9 +14,9 @@ namespace MLC.Services
         {
             _context = context;
         }
-        public IEnumerable<TblAccount> GetAccounts()
+        public IEnumerable<TblAccount> GetAccounts(string type)
         {
-            return _context.TblAccounts.OrderBy (a => a.Description);
+            return _context.TblAccounts.Where(a => a.Type == type);
         }
     }
 }

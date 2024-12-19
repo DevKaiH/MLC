@@ -21,7 +21,7 @@ namespace MLC.Services
 
         public IEnumerable<TblTransaction> GetList()
         {
-            return _context.TblTransactions;
+            return _context.TblTransactions.Where(t => t.LogID == null);
         }
         public string AddTransaction(TblTransaction Transaction)
         {

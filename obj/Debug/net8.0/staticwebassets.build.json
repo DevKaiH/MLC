@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tDPqJig/g3JglfKwV0mLW6uzATWIOZkF3J+/GGNV9WQ=",
+  "Hash": "z3pbUPTCNCwZNqKYVpqL7vWGK18noWVHVhKmpOvGtJQ=",
   "Source": "MLC",
   "BasePath": "_content/MLC",
   "Mode": "Default",
@@ -4214,6 +4214,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\weather.svg"
+    },
+    {
+      "Identity": "C:\\Users\\kaih\\source\\repos\\mlc\\wwwroot\\js\\file-utils.js",
+      "SourceId": "MLC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\kaih\\source\\repos\\mlc\\wwwroot\\",
+      "BasePath": "_content/MLC",
+      "RelativePath": "js/file-utils.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\file-utils.js"
     }
   ]
 }

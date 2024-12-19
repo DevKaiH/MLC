@@ -6,7 +6,7 @@ namespace MLC.Services
 {
     public interface IPCFileSVC
     {
-        IEnumerable<PCFile> GetData(int FileNr); 
+        IEnumerable<PCFile> GetData(int UserID); 
     }
     public class PCFileSVC : IPCFileSVC
     {
@@ -15,9 +15,9 @@ namespace MLC.Services
         {
             _context = context;
         }
-        public IEnumerable<PCFile> GetData(int FileNr)
+        public IEnumerable<PCFile> GetData(int UserID)
         {
-            return _context.PCFiles.FromSqlRaw("PCFile {0}", FileNr);
+            return _context.PCFiles.FromSqlRaw("PCFile {0}", UserID);
         }
     }
 }
