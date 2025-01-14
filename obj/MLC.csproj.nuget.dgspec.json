@@ -1,29 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kaih\\source\\repos\\mlc\\MLC.csproj": {}
+    "C:\\Users\\kai\\source\\repos\\MLC\\MLC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kaih\\source\\repos\\mlc\\MLC.csproj": {
+    "C:\\Users\\kai\\source\\repos\\MLC\\MLC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kaih\\source\\repos\\mlc\\MLC.csproj",
+        "projectUniqueName": "C:\\Users\\kai\\source\\repos\\MLC\\MLC.csproj",
         "projectName": "MLC",
-        "projectPath": "C:\\Users\\kaih\\source\\repos\\mlc\\MLC.csproj",
-        "packagesPath": "C:\\Users\\kaih\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kaih\\source\\repos\\mlc\\obj\\",
+        "projectPath": "C:\\Users\\kai\\source\\repos\\MLC\\MLC.csproj",
+        "packagesPath": "C:\\Users\\kai\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages",
-          "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
-          "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kaih\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.1.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.1.config",
+          "C:\\Users\\kai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -31,9 +28,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 23.1\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files\\DevExpress 24.1\\Components\\System\\Components\\Packages": {},
+          "C:\\Program Files\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -64,7 +59,7 @@
             },
             "DevExpress.Blazor": {
               "target": "Package",
-              "version": "[24.1.6, )"
+              "version": "[24.2.3, )"
             },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",

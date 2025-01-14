@@ -14,6 +14,7 @@
 @inject ITRANSSVC Trans
 @inject IJSRuntime JSRuntime
 @inject IPCFileSVC PC
+@inject IsettingsSVC SS
 
 <script src="js/file-utils.js"></script>
 
@@ -22,26 +23,36 @@
 <h1>Enter Expenses</h1>
 
 <DxFormLayout>
-    <DxFormLayoutItem Caption = "Bank Account">
-        <DxComboBox TData="BankAccount" 
-                    TValue="BankAccount" 
-                    Data = "BankAccounts"
-                    TextFieldName="@(nameof(BankAccount.AcctName))"
-                    ValueChanged="@((BankAccount selAcct) => BankSelected(selAcct))" 
-                    Value="SelBank" />
-        </DxFormLayoutItem>
-        <DxFormLayoutItem Caption="Account">
-        <DxComboBox TData="TblAccount"
-                    TValue="TblAccount"
-                    Data="AccountDS"
-                    TextFieldName="@(nameof(TblAccount.Description))"
-                    NullText="Select Account..."
-                    Value="SelAcct"
-                    ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
-                    ValueExpression="@( () => SelAcct )"
-                    TextExpression="@( () => SelAcct.Description )"
-                    FilteringMode="DataGridFilteringMode.Contains" />
+    <DxFormLayoutItem>
+        <!-- Other content goes here -->
     </DxFormLayoutItem>
+
+    <DxFormLayoutItem Caption="Bank Account">
+        <ChildContent Context="accountContext">
+            <DxComboBox TData="TblAccount"
+                        TValue="TblAccount"
+                        Data="@AccountDS.Where(t => t.Type == "B")"
+                        TextFieldName="@(nameof(TblAccount.Acct))"
+                        ValueChanged="@((TblAccount selAcct) => BankSelected(selAcct))"
+                        Value="SelBank" />
+        </ChildContent>
+    </DxFormLayoutItem>
+
+    <DxFormLayoutItem Caption="Account">
+        <ChildContent Context="anotherAccountContext">
+            <DxComboBox TData="TblAccount"
+                        TValue="TblAccount"
+                        Data="AccountDS"
+                        TextFieldName="@(nameof(TblAccount.Description))"
+                        NullText="Select Account..."
+                        Value="SelAcct"
+                        ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
+                        ValueExpression="@( () => SelAcct )"
+                        TextExpression="@( () => SelAcct.Description )"
+                        FilteringMode="DataGridFilteringMode.Contains" />
+        </ChildContent>
+    </DxFormLayoutItem>
+
     <DxFormLayoutItem Caption="Date">
         <DxDateEdit NullText="Select Date..." Date="Transactiondate" DateChanged="@((DateTime? selectedValue) => dateSelected(selectedValue))" />
     </DxFormLayoutItem>
@@ -58,7 +69,7 @@
         </DxSpinEdit>
     </DxFormLayoutItem>
     <DxFormLayoutItem Caption="Tax">
-        <DxCheckBox @bind-Checked="@NewTrans.Tax" />
+     
     </DxFormLayoutItem>
     <DxFormLayoutItem Caption="Upload Receipt">
         <div class="upload-container">
@@ -81,8 +92,8 @@
     <Columns>
         <DxGridDataColumn FieldName="Transactiondate"/>
         <DxGridDataColumn FieldName="Memo" />
-        <DxGridDataColumn FieldName="Amount" DisplayFormat="$ #,###.00" />
-        <DxGridDataColumn FieldName="Tax" />
+
+
         <DxGridCommandColumn VisibleIndex="5" EditButtonVisible="false" NewButtonVisible="false" />
     </Columns>
     <GroupSummary>
@@ -107,30 +118,32 @@
 
 @code
 {
-    public IEnumerable<TblAccount>?AccountDS { get; set; }
+    public IEnumerable<TblAccount>? AccountDS { get; set; }
     public IEnumerable<TblTransaction>? TransDS { get; set; }
+    public IEnumerable<TblTransactionDetail>? DetailsDS { get; set; }
     bool DataComplete = false;
     bool popup = false;
     bool trx = false;
-    string popheader { get; set; }
+    string? popheader { get; set; }
     int SelectedFilesCount { get; set; }
+    int TransID {get; set; }
     DateTime? Transactiondate { get; set; }
-    string Memo { get; set; }
+    string? Memo { get; set; }
+    string? Lineitem { get; set; }
     decimal amt { get; set; }
+    decimal tax { get; set; }
+    decimal gst { get; set; }
+    decimal pst { get; set; }
     private TblTransaction NewTrans = new TblTransaction();
+    private TblTransactionDetail NewDetail = new TblTransactionDetail();
     private string? Message { get; set; }
     public string? Filename { get; set; }
-    private VRecipient SelectedPerson;
-    private TblAccount SelAcct;
-    private BankAccount SelBank;
+    private VRecipient? SelectedPerson;
+    private TblAccount? SelAcct;
+    private TblAccount? SelBank;
     private System.Timers.Timer _timer;
     CultureInfo Culture = CultureInfo.GetCultureInfo("en-US");
 
-    List<BankAccount> BankAccounts = new List<BankAccount>
-    {
-        new BankAccount { AcctName = "Checking", AcctNo = "001-1110-000" },
-        new BankAccount { AcctName = "Savings", AcctNo = "001-1120-000" }
-    };
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -161,10 +174,19 @@
 
     public void SavePMT()
     {
-        NewTrans.Account = SelAcct.Acct;
-        NewTrans.Bankaccount = SelBank.AcctNo;
+        TransID = Trans.AddTransaction(NewTrans);
+        NewTrans.Account = SelBank.Id;
         NewTrans.Transactiondate = Transactiondate;
-        Message = Trans.AddTransaction(NewTrans);
+        NewTrans.Memo = Memo;
+        if(TransID == 0)
+        {
+            Message = "An Error occured saving your transaction";
+        }
+        else
+        {
+            Message = "Your transaction was saved, # " + TransID.ToString();
+        }
+        ;
         Reloadgrid();
         popheader = "Payment Saved";
         popup = true;
@@ -173,6 +195,23 @@
         // Clear objects
 
         NewTrans = new TblTransaction();       
+    }
+
+    public void SavePMTDetail()
+    {
+        NewDetail.Account = SelAcct.Id;
+        NewDetail.TransactionId = TransID;
+        NewDetail.Description = Lineitem;
+        NewDetail.Filename = Filename;        
+        Message = Trans.AddDetail(NewDetail);
+        Reloadgrid();
+        popheader = "Detail Saved";
+        popup = true;
+        startTimer();
+
+        // Clear objects
+
+        NewTrans = new TblTransaction();
     }
     public void Reloadgrid()
     {
@@ -191,14 +230,15 @@
     }
     public void AmtEntered(decimal amt)
     {
-        NewTrans.Amount = amt;
+        NewDetail.Amount = amt;
+
         DataComplete = true;
     }
     public void dateSelected(DateTime? selectedDate)
     {
         Transactiondate = selectedDate;
     }
-    public void BankSelected(BankAccount acct)
+    public void BankSelected(TblAccount acct)
     {
         SelBank = acct;
     }
@@ -282,7 +322,7 @@
             string filepath = Path.Combine(appRoot, "_receipts", Filename).Replace("\\bin\\Debug\\net7.0\\", "\\wwwroot\\");
             await using FileStream fs = new FileStream(filepath, FileMode.Create);
             await file.OpenReadStream().CopyToAsync(fs);
-            NewTrans.Filename = Filename;
+            //NewTrans.Filename = Filename;
             using var stream = new System.IO.MemoryStream();
             await file.OpenReadStream(file.Size).CopyToAsync(stream);
         }

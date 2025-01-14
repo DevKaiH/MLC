@@ -11,20 +11,9 @@ public partial class TblTransaction
 
     public string? Memo { get; set; }
 
-    public decimal? Amount { get; set; }
-
-    public bool? Tax { get; set; }
-
-    public string? Account { get; set; }
-
-    public string? Bankaccount { get; set; }
-
-    public string? Filename { get; set; }
+    public int? Account { get; set; }
 
     public string? AddUser { get; set; }
 
-    public int? LogID { get; set; }
-
-    public bool Detailrecord { get; set; }
-
+    public int? ReimburseToUser { get; set; }
 }

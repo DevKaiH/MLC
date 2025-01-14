@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddDbContext<MlcdataContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<MlcdataContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("MLCData")));
 
 builder.Services.AddDevExpressBlazor(options => {
     options.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v5;
@@ -23,6 +23,7 @@ builder.Services.AddScoped<IPMTSVC, PmtSVC>();
 builder.Services.AddScoped<IPCFileSVC, PCFileSVC>();
 builder.Services.AddScoped<IBMOFileSVC, BMOFileSVC>();
 builder.Services.AddScoped<ITRANSSVC, TransSVC>();
+builder.Services.AddScoped<IsettingsSVC, SettingSVC>();
 
 var app = builder.Build();
 

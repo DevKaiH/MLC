@@ -25,19 +25,21 @@ public partial class MlcdataContext : DbContext
 
     public virtual DbSet<TblRecipient> TblRecipients { get; set; }
 
+    public virtual DbSet<TblSetting> TblSettings { get; set; }
+
     public virtual DbSet<TblTransaction> TblTransactions { get; set; }
 
+    public virtual DbSet<TblTransactionDetail> TblTransactionDetails { get; set; }
+
     public virtual DbSet<TblUser> TblUsers { get; set; }
+
+    public virtual DbSet<TransBu> TransBus { get; set; }
 
     public virtual DbSet<VRecipient> VRecipients { get; set; }
 
     public virtual DbSet<BMO> BMOs { get; set; }
 
     public virtual DbSet<PCFile> PCFiles { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=(localdb)\\ProjectModels;Initial Catalog=MLCData;Integrated Security=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -52,6 +54,9 @@ public partial class MlcdataContext : DbContext
                 .IsFixedLength();
             entity.Property(e => e.Description)
                 .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Type)
+                .HasMaxLength(1)
                 .IsUnicode(false);
         });
 
@@ -101,14 +106,14 @@ public partial class MlcdataContext : DbContext
 
         modelBuilder.Entity<TblPclog>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Table__3214EC0722200760");
+            entity.HasKey(e => e.Id).HasName("PK__tmp_ms_x__3214EC071D8C7B68");
 
             entity.ToTable("tblPCLog");
 
-            entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Status)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
         });
 
         modelBuilder.Entity<TblRecipient>(entity =>
@@ -144,22 +149,42 @@ public partial class MlcdataContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<TblSetting>(entity =>
+        {
+            entity.ToTable("tblSettings");
+
+            entity.Property(e => e.Property)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+        });
+
         modelBuilder.Entity<TblTransaction>(entity =>
         {
             entity.ToTable("tblTransactions");
 
-            entity.Property(e => e.Account)
-                .HasMaxLength(12)
-                .IsUnicode(false);
             entity.Property(e => e.AddUser)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Amount).HasColumnType("money");
-            entity.Property(e => e.Filename)
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.Memo).IsUnicode(false);
             entity.Property(e => e.Transactiondate).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<TblTransactionDetail>(entity =>
+        {
+            entity.ToTable("tblTransactionDetail");
+
+            entity.Property(e => e.Id).HasColumnName("ID");
+            entity.Property(e => e.Amount).HasColumnType("money");
+            entity.Property(e => e.Description).IsUnicode(false);
+            entity.Property(e => e.Filename).IsUnicode(false);
+            entity.Property(e => e.Gst)
+                .HasColumnType("money")
+                .HasColumnName("GST");
+            entity.Property(e => e.Pst)
+                .HasColumnType("money")
+                .HasColumnName("PST");
+            entity.Property(e => e.Tax).HasColumnType("money");
+            entity.Property(e => e.TransactionId).HasColumnName("TransactionID");
         });
 
         modelBuilder.Entity<TblUser>(entity =>
@@ -178,6 +203,31 @@ public partial class MlcdataContext : DbContext
             entity.Property(e => e.UserName)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<TransBu>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("TransBU");
+
+            entity.Property(e => e.Account)
+                .HasMaxLength(12)
+                .IsUnicode(false);
+            entity.Property(e => e.AddUser)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Amount).HasColumnType("money");
+            entity.Property(e => e.Bankaccount)
+                .HasMaxLength(12)
+                .IsUnicode(false);
+            entity.Property(e => e.Filename)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            entity.Property(e => e.LogId).HasColumnName("LogID");
+            entity.Property(e => e.Memo).IsUnicode(false);
+            entity.Property(e => e.Transactiondate).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<VRecipient>(entity =>
@@ -216,6 +266,7 @@ public partial class MlcdataContext : DbContext
                 .HasMaxLength(5)
                 .IsUnicode(false);
         });
+
         modelBuilder.Entity<PCFile>(entity =>
         {
             entity.HasNoKey();

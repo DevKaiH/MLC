@@ -17,7 +17,7 @@ namespace MLC.Services
         }
         public IEnumerable<BMO> GetFile()
         {
-            return _context.BMOs.FromSqlRaw("BMOFile");
+            return _context.BMOs.FromSqlRaw("BMOFile");           
         }
     }
 }

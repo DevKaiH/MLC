@@ -7,9 +7,12 @@ namespace MLC.Services
     public interface ITRANSSVC
     {
         IEnumerable<TblTransaction> GetList();
-        public string AddTransaction(TblTransaction Transaction);
+        IEnumerable<TblTransactionDetail> GetDetails(int TransID);
+  
+        public int AddTransaction(TblTransaction Transaction);
+        public string AddDetail(TblTransactionDetail Detail);
         public string DeleteTransaction(TblTransaction delpmt);
-        
+        public string DeleteDetail(TblTransactionDetail Detail);
     }
     public class TransSVC : ITRANSSVC
     {
@@ -21,21 +24,39 @@ namespace MLC.Services
 
         public IEnumerable<TblTransaction> GetList()
         {
-            return _context.TblTransactions.Where(t => t.LogID == null);
+            return _context.TblTransactions; 
         }
-        public string AddTransaction(TblTransaction Transaction)
+
+        public IEnumerable<TblTransactionDetail>GetDetails(int TransID)
+        {
+            return _context.TblTransactionDetails.Where(d => d.TransactionId == TransID);
+        }
+        public int AddTransaction(TblTransaction Transaction)
         {
             try
             {
                 _context.TblTransactions.Add(Transaction);
                 _context.SaveChanges();
-                return "Transaction request was saved!";
+                return Transaction.Id;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+        public string AddDetail(TblTransactionDetail Detail)
+        {
+            try
+            {
+                _context.TblTransactionDetails.Add(Detail);
+                _context.SaveChanges();
+                return "Transactio detail request was saved!";
             }
             catch (Exception ex)
             {
                 return ex.ToString();
             }
-        }    
+        }
         public string DeleteTransaction(TblTransaction deltrans)
         {
             try
@@ -50,6 +71,21 @@ namespace MLC.Services
             {
                 return ex.ToString();
             }
-        }        
+        }
+        public string DeleteDetail(TblTransactionDetail detail)
+        {
+            try
+            {
+
+                _context.TblTransactionDetails.Remove(detail);
+                _context.SaveChanges();
+                return "Transactio detail request was deleted!";
+
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
     }
 }

@@ -60,23 +60,24 @@
           }
         }
       },
-      "DevExpress.Blazor/24.1.6": {
+      "DevExpress.Blazor/24.2.3": {
         "type": "package",
         "dependencies": {
-          "DevExpress.Blazor.Themes": "[24.1.6]",
-          "DevExpress.Data": "[24.1.6]",
-          "DevExpress.Printing.Core": "[24.1.6]",
+          "DevExpress.Blazor.Resources": "[24.2.3]",
+          "DevExpress.Blazor.Themes": "[24.2.3]",
+          "DevExpress.Data": "[24.2.3]",
+          "DevExpress.Printing.Core": "[24.2.3]",
           "DevExtreme.AspNet.Data": "4.0.0",
           "System.Drawing.Common": "4.7.2",
           "System.Reactive": "5.0.0"
         },
         "compile": {
-          "lib/net6.0/DevExpress.Blazor.v24.1.dll": {
+          "lib/net8.0/DevExpress.Blazor.v24.2.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/DevExpress.Blazor.v24.1.dll": {
+          "lib/net8.0/DevExpress.Blazor.v24.2.dll": {
             "related": ".xml"
           }
         },
@@ -88,7 +89,25 @@
           "buildMultiTargeting/DevExpress.Blazor.props": {}
         }
       },
-      "DevExpress.Blazor.Themes/24.1.6": {
+      "DevExpress.Blazor.Resources/24.2.3": {
+        "type": "package",
+        "dependencies": {
+          "DevExpress.Data": "[24.2.3]"
+        },
+        "compile": {
+          "lib/net8.0/DevExpress.Blazor.Resources.v24.2.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/DevExpress.Blazor.Resources.v24.2.dll": {}
+        },
+        "build": {
+          "buildTransitive/DevExpress.Blazor.Resources.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/DevExpress.Blazor.Resources.props": {}
+        }
+      },
+      "DevExpress.Blazor.Themes/24.2.3": {
         "type": "package",
         "build": {
           "buildTransitive/DevExpress.Blazor.Themes.props": {}
@@ -97,97 +116,95 @@
           "buildMultiTargeting/DevExpress.Blazor.Themes.props": {}
         }
       },
-      "DevExpress.Data/24.1.6": {
+      "DevExpress.Data/24.2.3": {
         "type": "package",
         "dependencies": {
           "System.Drawing.Common": "4.7.2"
         },
         "compile": {
-          "lib/net6.0/DevExpress.Data.v24.1.dll": {
+          "lib/net8.0/DevExpress.Data.v24.2.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/DevExpress.Data.v24.1.dll": {
+          "lib/net8.0/DevExpress.Data.v24.2.dll": {
             "related": ".xml"
           }
         }
       },
-      "DevExpress.Drawing/24.1.6": {
+      "DevExpress.Drawing/24.2.3": {
         "type": "package",
         "dependencies": {
-          "DevExpress.Data": "[24.1.6]",
+          "DevExpress.Data": "[24.2.3]",
           "System.Drawing.Common": "4.7.2"
         },
         "compile": {
-          "lib/net6.0/DevExpress.Drawing.v24.1.dll": {
+          "lib/net8.0/DevExpress.Drawing.v24.2.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/DevExpress.Drawing.v24.1.dll": {
+          "lib/net8.0/DevExpress.Drawing.v24.2.dll": {
             "related": ".xml"
           }
         }
       },
-      "DevExpress.Pdf.Core/24.1.6": {
+      "DevExpress.Pdf.Core/24.2.3": {
         "type": "package",
         "dependencies": {
-          "DevExpress.Data": "[24.1.6]",
-          "DevExpress.Drawing": "[24.1.6]",
+          "DevExpress.Data": "[24.2.3]",
+          "DevExpress.Drawing": "[24.2.3]",
           "System.Drawing.Common": "4.7.2",
-          "System.Formats.Asn1": "6.0.1",
-          "System.Security.Cryptography.Pkcs": "6.0.3"
+          "System.Security.Cryptography.Pkcs": "8.0.1"
         },
         "compile": {
-          "lib/net6.0/DevExpress.Pdf.v24.1.Core.dll": {
+          "lib/net8.0/DevExpress.Pdf.v24.2.Core.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/DevExpress.Pdf.v24.1.Core.dll": {
+          "lib/net8.0/DevExpress.Pdf.v24.2.Core.dll": {
             "related": ".xml"
           }
         }
       },
-      "DevExpress.Pdf.Drawing/24.1.6": {
+      "DevExpress.Pdf.Drawing/24.2.3": {
         "type": "package",
         "dependencies": {
-          "DevExpress.Data": "[24.1.6]",
-          "DevExpress.Drawing": "[24.1.6]",
-          "DevExpress.Pdf.Core": "[24.1.6]",
+          "DevExpress.Data": "[24.2.3]",
+          "DevExpress.Drawing": "[24.2.3]",
+          "DevExpress.Pdf.Core": "[24.2.3]",
           "System.Drawing.Common": "4.7.2"
         },
         "compile": {
-          "lib/net6.0/DevExpress.Pdf.v24.1.Drawing.dll": {
+          "lib/net8.0/DevExpress.Pdf.v24.2.Drawing.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/DevExpress.Pdf.v24.1.Drawing.dll": {
+          "lib/net8.0/DevExpress.Pdf.v24.2.Drawing.dll": {
             "related": ".xml"
           }
         }
       },
-      "DevExpress.Printing.Core/24.1.6": {
+      "DevExpress.Printing.Core/24.2.3": {
         "type": "package",
         "dependencies": {
-          "DevExpress.Data": "[24.1.6]",
-          "DevExpress.Drawing": "[24.1.6]",
-          "DevExpress.Pdf.Core": "[24.1.6]",
-          "DevExpress.Pdf.Drawing": "[24.1.6]",
+          "DevExpress.Data": "[24.2.3]",
+          "DevExpress.Drawing": "[24.2.3]",
+          "DevExpress.Pdf.Core": "[24.2.3]",
+          "DevExpress.Pdf.Drawing": "[24.2.3]",
           "System.Drawing.Common": "4.7.2",
-          "System.Formats.Asn1": "6.0.1",
-          "System.Security.Cryptography.Pkcs": "6.0.3",
+          "System.Security.Cryptography.Pkcs": "8.0.1",
           "System.ServiceModel.Http": "6.2.0"
         },
         "compile": {
-          "lib/net6.0/DevExpress.Printing.v24.1.Core.dll": {
+          "lib/net8.0/DevExpress.Printing.v24.2.Core.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/DevExpress.Printing.v24.1.Core.dll": {
+          "lib/net8.0/DevExpress.Printing.v24.2.Core.dll": {
             "related": ".xml"
           }
         }
@@ -1595,26 +1612,23 @@
           }
         }
       },
-      "System.Security.Cryptography.Pkcs/6.0.3": {
+      "System.Security.Cryptography.Pkcs/8.0.1": {
         "type": "package",
-        "dependencies": {
-          "System.Formats.Asn1": "6.0.0"
-        },
         "compile": {
-          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
             "related": ".xml"
           }
         },
         "build": {
-          "buildTransitive/netcoreapp3.1/_._": {}
+          "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll": {
+          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -2010,10 +2024,10 @@
         "lib/netstandard2.1/CsvHelper.xml"
       ]
     },
-    "DevExpress.Blazor/24.1.6": {
-      "sha512": "T/VSEBzpQfdPNQ6XLCCDSUaRk+gZC1/SJTXuvfhD6yUB+SsaLvNprZbN/Pgl58OXPm0ro6pd46AtJhnIXK8ePA==",
+    "DevExpress.Blazor/24.2.3": {
+      "sha512": "Pl6tK8zm/T1bOzSrMW+RjCjEAMQ2xh/ghoQ044Pc3afL2GoV4YE7MO34aeADDpiL7BLRMkHUQckl/hTdJWjj6Q==",
       "type": "package",
-      "path": "devexpress.blazor/24.1.6",
+      "path": "devexpress.blazor/24.2.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2023,179 +2037,216 @@
         "buildTransitive/DevExpress.Blazor.props",
         "buildTransitive/net5.0/DevExpress.Blazor.props",
         "buildTransitive/net5.0/DevExpress.Blazor.targets",
-        "devexpress.blazor.24.1.6.nupkg.sha512",
+        "devexpress.blazor.24.2.3.nupkg.sha512",
         "devexpress.blazor.nuspec",
-        "lib/net6.0/DevExpress.Blazor.v24.1.dll",
-        "lib/net6.0/DevExpress.Blazor.v24.1.xml",
-        "staticwebassets/dx-blazor-f98cd0f48e.svg",
-        "staticwebassets/modules/_tslib-6e8ca86b.js",
-        "staticwebassets/modules/adaptivedropdowncomponents-ea59aebc.js",
-        "staticwebassets/modules/after-render-utils-180db514.js",
-        "staticwebassets/modules/baseChart-7064a43e.js",
-        "staticwebassets/modules/branch-e081818f.js",
-        "staticwebassets/modules/browser-d96520d8.js",
-        "staticwebassets/modules/capturemanager-43e041e5.js",
-        "staticwebassets/modules/chart-f47bf47d.js",
-        "staticwebassets/modules/column-resize-d30a7d23.js",
-        "staticwebassets/modules/columnchooser-ab1bbcd9.js",
-        "staticwebassets/modules/common-f853e871.js",
+        "lib/net8.0/DevExpress.Blazor.v24.2.dll",
+        "lib/net8.0/DevExpress.Blazor.v24.2.xml",
+        "staticwebassets/dx-blazor.svg",
+        "staticwebassets/modules/_commonjsHelpers-41cdd1e7.js",
+        "staticwebassets/modules/adaptivedropdowncomponents-3aa8e8ea.js",
+        "staticwebassets/modules/after-render-utils.js",
+        "staticwebassets/modules/baseChart-1f75568a.js",
+        "staticwebassets/modules/branch-aebd078a.js",
+        "staticwebassets/modules/browser-3fc721b7.js",
+        "staticwebassets/modules/capture-manager-2bbac3a3.js",
+        "staticwebassets/modules/chart-0dc4dfb1.js",
+        "staticwebassets/modules/client-component-style-helper-195fa7c3.js",
+        "staticwebassets/modules/column-resize-487a9c30.js",
+        "staticwebassets/modules/columnchooser-de0542af.js",
+        "staticwebassets/modules/common-48ec40e2.js",
         "staticwebassets/modules/const-90026e45.js",
-        "staticwebassets/modules/constants-058ebb50.js",
-        "staticwebassets/modules/constants-23e48cf5.js",
+        "staticwebassets/modules/constants-3209ffde.js",
         "staticwebassets/modules/constants-3937401e.js",
-        "staticwebassets/modules/constants-791d6f9b.js",
-        "staticwebassets/modules/constants-86572358.js",
-        "staticwebassets/modules/constants-9c7feb92.js",
+        "staticwebassets/modules/constants-7c047c0d.js",
+        "staticwebassets/modules/constants-a4904a3f.js",
+        "staticwebassets/modules/constants-da6cacac.js",
+        "staticwebassets/modules/constants-ed9663d1.js",
         "staticwebassets/modules/create-after-timeout-fn-executor-38b3d79d.js",
-        "staticwebassets/modules/css-classes-cee8476c.js",
-        "staticwebassets/modules/custom-color-area-e5719ee5.js",
+        "staticwebassets/modules/css-classes-c63af734.js",
+        "staticwebassets/modules/custom-color-area-43e9c313.js",
         "staticwebassets/modules/custom-element-267f9a21.js",
         "staticwebassets/modules/custom-events-helper-e7f279d3.js",
-        "staticwebassets/modules/custom-theme-generator-bd7c0d2c.js",
         "staticwebassets/modules/data-qa-utils-8be7c726.js",
-        "staticwebassets/modules/define-custom-element-6b54b261.js",
-        "staticwebassets/modules/devexpress-0b50e694.js",
-        "staticwebassets/modules/devextreme-widget-wrapper-2a3d4e2d.js",
-        "staticwebassets/modules/devices-afeafb19.js",
+        "staticwebassets/modules/define-custom-element-7c2e65e2.js",
+        "staticwebassets/modules/devextreme-widget-wrapper-655de694.js",
+        "staticwebassets/modules/devices-17b9ba08.js",
         "staticwebassets/modules/disposable-d2c2d283.js",
-        "staticwebassets/modules/dom-da46d023.js",
-        "staticwebassets/modules/dom-utils-c35907a1.js",
-        "staticwebassets/modules/dotnet-a96c8118.js",
-        "staticwebassets/modules/dragAndDropUnit-98774f64.js",
-        "staticwebassets/modules/draggable-eb9fff07.js",
-        "staticwebassets/modules/dropdown-e7ddb090.js",
-        "staticwebassets/modules/dropdown-menu-keyboard-strategy-6e0f0d2e.js",
-        "staticwebassets/modules/dropdowncomponents-98e6e20e.js",
-        "staticwebassets/modules/dropdowns-cdc08eef.js",
-        "staticwebassets/modules/dx-accordion-a69fa1c6.js",
-        "staticwebassets/modules/dx-bar-gauge-481188ae.js",
-        "staticwebassets/modules/dx-blazor-8456942b.js",
-        "staticwebassets/modules/dx-blazor-all-90a8f63a.js",
-        "staticwebassets/modules/dx-calendar-9f30d61d.js",
-        "staticwebassets/modules/dx-check-internal-86e25c23.js",
-        "staticwebassets/modules/dx-combo-box-27b20100.js",
-        "staticwebassets/modules/dx-combobox-7c1affeb.js",
-        "staticwebassets/modules/dx-context-menu-a4ef0d6e.js",
+        "staticwebassets/modules/dom-554d0cc7.js",
+        "staticwebassets/modules/dom-utils-d057dcaa.js",
+        "staticwebassets/modules/dragAndDropUnit-a8432e5f.js",
+        "staticwebassets/modules/draggable-abfd0256.js",
+        "staticwebassets/modules/dragging-helper-d7bfd9f1.js",
+        "staticwebassets/modules/dropdown-62633ab9.js",
+        "staticwebassets/modules/dropdown-menu-keyboard-strategy-4621430c.js",
+        "staticwebassets/modules/dropdowncomponents-faba488e.js",
+        "staticwebassets/modules/dropdowns-8b3de970.js",
+        "staticwebassets/modules/dx-accordion-ef13f16f.js",
+        "staticwebassets/modules/dx-adaptive-container-e6e21547.js",
+        "staticwebassets/modules/dx-bar-gauge-a921aed8.js",
+        "staticwebassets/modules/dx-blazor-all.js",
+        "staticwebassets/modules/dx-blazor-quill.js",
+        "staticwebassets/modules/dx-button-ca988745.js",
+        "staticwebassets/modules/dx-calendar-3dd4c463.js",
+        "staticwebassets/modules/dx-carousel-bfa62653.js",
+        "staticwebassets/modules/dx-check-internal-15186bea.js",
+        "staticwebassets/modules/dx-color-palette-1d54d36f.js",
+        "staticwebassets/modules/dx-combo-box-523ffd36.js",
+        "staticwebassets/modules/dx-combobox-20c4b9aa.js",
+        "staticwebassets/modules/dx-context-menu-d3480a8c.js",
         "staticwebassets/modules/dx-css-runtime-b3e20aad.js",
-        "staticwebassets/modules/dx-date-edit-b60fd919.js",
-        "staticwebassets/modules/dx-date-edit-base-74e41177.js",
-        "staticwebassets/modules/dx-date-range-picker-73695bc5.js",
-        "staticwebassets/modules/dx-date-time-edit-e59d5e1d.js",
-        "staticwebassets/modules/dx-drawer-076dfca6.js",
-        "staticwebassets/modules/dx-dropdown-base3-881e96ed.js",
-        "staticwebassets/modules/dx-dropdown-box-622dac24.js",
-        "staticwebassets/modules/dx-dropdown-list-box-34d12b8d.js",
-        "staticwebassets/modules/dx-dropdown-owner-4c4a5c89.js",
-        "staticwebassets/modules/dx-form-layout-37a9b887.js",
-        "staticwebassets/modules/dx-grid-55284564.js",
-        "staticwebassets/modules/dx-grid-layout-1fd1d934.js",
-        "staticwebassets/modules/dx-grid-layout-element-base-ceb35927.js",
-        "staticwebassets/modules/dx-html-editor-7d3639e8.js",
-        "staticwebassets/modules/dx-html-element-base-2a08633a.js",
-        "staticwebassets/modules/dx-html-element-pointer-events-helper-b4d2ae7e.js",
-        "staticwebassets/modules/dx-license-19f262c8.js",
-        "staticwebassets/modules/dx-list-box-1ef51195.js",
-        "staticwebassets/modules/dx-list-box-events-bcd714fa.js",
-        "staticwebassets/modules/dx-listbox-c55c4ea3.js",
-        "staticwebassets/modules/dx-loading-panel-1e2e8f88.js",
-        "staticwebassets/modules/dx-map-9e41f8bd.js",
-        "staticwebassets/modules/dx-memo-733505e1.js",
-        "staticwebassets/modules/dx-menu-cc5f6ec6.js",
-        "staticwebassets/modules/dx-menu-item-1fdd70ed.js",
-        "staticwebassets/modules/dx-menu-preloader-e1834dc5.js",
-        "staticwebassets/modules/dx-progress-bar-fdd564f8.js",
-        "staticwebassets/modules/dx-scroll-viewer-057f80de.js",
-        "staticwebassets/modules/dx-sparkline-657749d1.js",
-        "staticwebassets/modules/dx-stack-layout-0e7e2a19.js",
-        "staticwebassets/modules/dx-style-helper-8653eeab.js",
-        "staticwebassets/modules/dx-tag-box-82df9612.js",
-        "staticwebassets/modules/dx-tagbox-dee8a644.js",
-        "staticwebassets/modules/dx-toast-4c4de1c1.js",
-        "staticwebassets/modules/dx-toast-portal-695b9142.js",
-        "staticwebassets/modules/dx-tree-view-5dd5adb3.js",
-        "staticwebassets/modules/dx-ui-element-cca0189c.js",
+        "staticwebassets/modules/dx-date-edit-ba6fd725.js",
+        "staticwebassets/modules/dx-date-edit-base-a2e758f4.js",
+        "staticwebassets/modules/dx-date-range-picker-23a019f3.js",
+        "staticwebassets/modules/dx-date-time-edit-5182277d.js",
+        "staticwebassets/modules/dx-drawer-621e683c.js",
+        "staticwebassets/modules/dx-dropdown-base3-0b8bebe2.js",
+        "staticwebassets/modules/dx-dropdown-box-a167c487.js",
+        "staticwebassets/modules/dx-dropdown-list-box-5d54546d.js",
+        "staticwebassets/modules/dx-dropdown-owner-f2dbe8ff.js",
+        "staticwebassets/modules/dx-form-layout-e903c35d.js",
+        "staticwebassets/modules/dx-grid-a759e2f9.js",
+        "staticwebassets/modules/dx-grid-layout-9383c4a7.js",
+        "staticwebassets/modules/dx-grid-layout-element-base-b6cadde7.js",
+        "staticwebassets/modules/dx-html-editor-47306dc2.js",
+        "staticwebassets/modules/dx-html-element-base-e951cb17.js",
+        "staticwebassets/modules/dx-html-element-pointer-events-helper-3a1681ea.js",
+        "staticwebassets/modules/dx-license-7b9121f4.js",
+        "staticwebassets/modules/dx-list-box-45fd74c4.js",
+        "staticwebassets/modules/dx-list-box-events-d75c0faf.js",
+        "staticwebassets/modules/dx-listbox-d674fade.js",
+        "staticwebassets/modules/dx-loading-panel-41c4b7e3.js",
+        "staticwebassets/modules/dx-map-cd69ddea.js",
+        "staticwebassets/modules/dx-memo-11d56f99.js",
+        "staticwebassets/modules/dx-menu-70543bc6.js",
+        "staticwebassets/modules/dx-menu-item-64d3d745.js",
+        "staticwebassets/modules/dx-menu-preloader-c40bcae2.js",
+        "staticwebassets/modules/dx-pivot-table-199d0f02.js",
+        "staticwebassets/modules/dx-progress-bar-d7a38cae.js",
+        "staticwebassets/modules/dx-range-selector-d33b6b66.js",
+        "staticwebassets/modules/dx-ribbon-c1467285.js",
+        "staticwebassets/modules/dx-sankey-0cda5001.js",
+        "staticwebassets/modules/dx-scroll-viewer-652b9cba.js",
+        "staticwebassets/modules/dx-sparkline-e24e6a56.js",
+        "staticwebassets/modules/dx-splitter-0a086288.js",
+        "staticwebassets/modules/dx-splitter-separator-36c0cb72.js",
+        "staticwebassets/modules/dx-stack-layout-cd0721b1.js",
+        "staticwebassets/modules/dx-style-helper-f3c41c5d.js",
+        "staticwebassets/modules/dx-tab-item-96a17c03.js",
+        "staticwebassets/modules/dx-tab-list-8c65db4c.js",
+        "staticwebassets/modules/dx-tag-box-e59401e7.js",
+        "staticwebassets/modules/dx-tagbox-04196c0c.js",
+        "staticwebassets/modules/dx-toast-3a423490.js",
+        "staticwebassets/modules/dx-toast-portal-357b0246.js",
+        "staticwebassets/modules/dx-tree-list-188c648a.js",
+        "staticwebassets/modules/dx-tree-view-1f007d02.js",
+        "staticwebassets/modules/dx-ui-element-38985cf5.js",
         "staticwebassets/modules/dx-ui-handlers-bridge-c2148178.js",
-        "staticwebassets/modules/dx-virtual-scroll-viewer-c7388b6d.js",
-        "staticwebassets/modules/dxbl-itemlistdropdown-84bb0a87.js",
-        "staticwebassets/modules/dxbl-window-8369ea45.js",
-        "staticwebassets/modules/dynamic-stylesheet-component-e45a91ae.js",
+        "staticwebassets/modules/dx-virtual-scroll-viewer-a65ecbb8.js",
+        "staticwebassets/modules/dxbl-itemlistdropdown-17408359.js",
+        "staticwebassets/modules/dxbl-window-d3dcea4b.js",
+        "staticwebassets/modules/dynamic-stylesheet-component-0ddead18.js",
         "staticwebassets/modules/enumConverter-6047c3ff.js",
         "staticwebassets/modules/eventRegister-fb9b0e47.js",
-        "staticwebassets/modules/eventhelper-8570b930.js",
-        "staticwebassets/modules/events-5c1c8df0.js",
+        "staticwebassets/modules/eventhelper-8bcec49f.js",
+        "staticwebassets/modules/events-5ceb0642.js",
         "staticwebassets/modules/events-70d90aad.js",
-        "staticwebassets/modules/events-interseptor-35e91aec.js",
-        "staticwebassets/modules/evt-e106b696.js",
-        "staticwebassets/modules/expandable-container-e0863add.js",
-        "staticwebassets/modules/file-input-54f20fb5.js",
-        "staticwebassets/modules/flyout-543a38e7.js",
-        "staticwebassets/modules/flyoutcomponents-e05d072d.js",
-        "staticwebassets/modules/focus-utils-405a64a8.js",
-        "staticwebassets/modules/focushelper-cb993bae.js",
-        "staticwebassets/modules/focustrap-8a58142c.js",
-        "staticwebassets/modules/grid-83d879db.js",
-        "staticwebassets/modules/grid-scroll-utils-32c7029e.js",
-        "staticwebassets/modules/group-control-0bd861c6.js",
-        "staticwebassets/modules/index-4751008e.js",
-        "staticwebassets/modules/input-843adaf1.js",
-        "staticwebassets/modules/key-f9cbed1b.js",
-        "staticwebassets/modules/keyboard-navigation-strategy-940ff3b3.js",
-        "staticwebassets/modules/layouthelper-0c7c89da.js",
+        "staticwebassets/modules/events-a8fe5872.js",
+        "staticwebassets/modules/events-f873e646.js",
+        "staticwebassets/modules/events-interseptor-a522582a.js",
+        "staticwebassets/modules/evt-ef2dea65.js",
+        "staticwebassets/modules/expandable-container-d60e8da1.js",
+        "staticwebassets/modules/file-input-a53db9a7.js",
+        "staticwebassets/modules/flyout-dc598dc3.js",
+        "staticwebassets/modules/flyoutcomponents-f73fbc75.js",
+        "staticwebassets/modules/focus-utils-d076e44c.js",
+        "staticwebassets/modules/focushelper-3e91fef2.js",
+        "staticwebassets/modules/focustrap-f9759d02.js",
+        "staticwebassets/modules/grid-a0e9ba89.js",
+        "staticwebassets/modules/grid-scroll-utils-d3fe1de0.js",
+        "staticwebassets/modules/group-control-1fc25336.js",
+        "staticwebassets/modules/index-8c4ece46.js",
+        "staticwebassets/modules/input-18241015.js",
+        "staticwebassets/modules/key-ffa272aa.js",
+        "staticwebassets/modules/keyboard-navigation-strategy-5d0ea026.js",
+        "staticwebassets/modules/layouthelper-b10d5065.js",
         "staticwebassets/modules/lit-element-462e7ad3.js",
-        "staticwebassets/modules/lit-element-base-1eff578d.js",
-        "staticwebassets/modules/logicaltreehelper-7b19cc30.js",
-        "staticwebassets/modules/masked-input-68eb0885.js",
-        "staticwebassets/modules/menu-keyboard-strategy-a05b4bfa.js",
-        "staticwebassets/modules/modalcomponents-c2ec21ed.js",
+        "staticwebassets/modules/lit-element-base-be4d2d51.js",
+        "staticwebassets/modules/logicaltreehelper-39bf56ef.js",
+        "staticwebassets/modules/masked-input-441631c1.js",
+        "staticwebassets/modules/menu-keyboard-strategy-038dce66.js",
+        "staticwebassets/modules/modal-keyboard-strategy-9c1bfe8a.js",
+        "staticwebassets/modules/modalcomponents-709a1647.js",
         "staticwebassets/modules/nameof-factory-64d95f5b.js",
         "staticwebassets/modules/observables-589a5615.js",
         "staticwebassets/modules/pager-64a19cb6.js",
-        "staticwebassets/modules/pieChart-3f38f4c6.js",
+        "staticwebassets/modules/pie-chart-4ca43bde.js",
         "staticwebassets/modules/point-e4ec110e.js",
-        "staticwebassets/modules/polarChart-40c16a16.js",
-        "staticwebassets/modules/popup-354ae420.js",
-        "staticwebassets/modules/popupportal-87b21a6c.js",
-        "staticwebassets/modules/portal-8366b474.js",
-        "staticwebassets/modules/positionlistener-192de9f8.js",
-        "staticwebassets/modules/positiontracker-896b964e.js",
+        "staticwebassets/modules/polar-chart-062d5bb4.js",
+        "staticwebassets/modules/popup-72173b03.js",
+        "staticwebassets/modules/popupportal-fe8de4f3.js",
+        "staticwebassets/modules/portal-b3727c25.js",
+        "staticwebassets/modules/positionlistener-f4a11de4.js",
+        "staticwebassets/modules/positiontracker-83785493.js",
         "staticwebassets/modules/property-4ec0b52d.js",
         "staticwebassets/modules/query-44b9267f.js",
         "staticwebassets/modules/rafaction-bba7928b.js",
-        "staticwebassets/modules/ribbon-8babc13f.js",
-        "staticwebassets/modules/ribbon-tabs-f78b621b.js",
-        "staticwebassets/modules/ribbon-utils-6bb79d90.js",
-        "staticwebassets/modules/roller-ac970633.js",
-        "staticwebassets/modules/root-keyboard-strategy-e06240ff.js",
-        "staticwebassets/modules/scheduler-2a618d8d.js",
-        "staticwebassets/modules/screenhelper-cc818363.js",
-        "staticwebassets/modules/scroll-viewer-css-classes-4d6797bc.js",
-        "staticwebassets/modules/single-slot-element-base-a62312b6.js",
-        "staticwebassets/modules/snackbar-faac56f1.js",
-        "staticwebassets/modules/spinedit-55e19ae9.js",
+        "staticwebassets/modules/ribbon-2e1607c4.js",
+        "staticwebassets/modules/ribbon-item-1303df37.js",
+        "staticwebassets/modules/ribbon-tabs-51ad7bb7.js",
+        "staticwebassets/modules/ribbon-utils-2b6a64cb.js",
+        "staticwebassets/modules/roller-f371ac82.js",
+        "staticwebassets/modules/root-keyboard-strategy-1b007ec4.js",
+        "staticwebassets/modules/scheduler-1f0b9a20.js",
+        "staticwebassets/modules/screenhelper-c6dce9b0.js",
+        "staticwebassets/modules/scroll-viewer-css-classes-e724f203.js",
+        "staticwebassets/modules/settings-303a782f.js",
+        "staticwebassets/modules/single-slot-element-base-6c879161.js",
+        "staticwebassets/modules/spinedit-23d5d85e.js",
         "staticwebassets/modules/state-c294470d.js",
-        "staticwebassets/modules/svg-utils-6d80148e.js",
-        "staticwebassets/modules/text-editor-46ae18bc.js",
-        "staticwebassets/modules/thumb-c80aa4fc.js",
-        "staticwebassets/modules/toolbar-b953700e.js",
-        "staticwebassets/modules/toolbar-css-classes-a87b5199.js",
-        "staticwebassets/modules/tooltip-30e59f64.js",
-        "staticwebassets/modules/touch-4bff3f51.js",
+        "staticwebassets/modules/svg-utils-3c1b4ead.js",
+        "staticwebassets/modules/tabbable-7d32c528.js",
+        "staticwebassets/modules/text-editor-9fb6fa4a.js",
+        "staticwebassets/modules/thumb-31d768d7.js",
+        "staticwebassets/modules/toolbar-a7c7b2c6.js",
+        "staticwebassets/modules/toolbar-css-classes-d303c118.js",
+        "staticwebassets/modules/touch-6a322081.js",
         "staticwebassets/modules/transformhelper-ebad0156.js",
-        "staticwebassets/modules/upload-4c85e82d.js",
-        "staticwebassets/modules/upload-base-20c2c91d.js",
-        "staticwebassets/modules/utils-583c443b.js",
-        "staticwebassets/modules/webview-svg-loader-d4378c1a.js",
-        "staticwebassets/modules/widget-chunks/dxw-bar-gauge-844ef8765494d5e9e2cf.js",
-        "staticwebassets/modules/widget-chunks/dxw-html-editor-912b4342d7f1478a25f9.js",
-        "staticwebassets/modules/widget-chunks/dxw-html-editor-912b4342d7f1478a25f9.js.LICENSE.txt",
-        "staticwebassets/modules/widget-chunks/dxw-map-d41d799a85ec17328e41.js",
+        "staticwebassets/modules/tslib.es6-d65164b3.js",
+        "staticwebassets/modules/upload-0230f3d0.js",
+        "staticwebassets/modules/upload-base-7639c3f2.js",
+        "staticwebassets/modules/utils-b5b2c8a9.js",
+        "staticwebassets/modules/webview-svg-loader-7cd1bef2.js",
         "staticwebassets/modules/window-resize-helper-8b32f302.js"
       ]
     },
-    "DevExpress.Blazor.Themes/24.1.6": {
-      "sha512": "/9+qZLdlXumM1wFmDGZzhTea05cidqchyMCFFtoK7MndvDGCmRA5pJJlUlhfU03khmoIIjyKxyYiKqSG+xSmcg==",
+    "DevExpress.Blazor.Resources/24.2.3": {
+      "sha512": "Ct9A+K6QWk15NGlK+n+iqkAtHhq1AnsP7HWxE7qFctlSM5dk/g8Y8Ckbwd2mSdwBfSMIl05lctZ/VchyM3zjZg==",
       "type": "package",
-      "path": "devexpress.blazor.themes/24.1.6",
+      "path": "devexpress.blazor.resources/24.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/DevExpress.Blazor.Resources.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/DevExpress.Blazor.Resources.props",
+        "buildTransitive/DevExpress.Blazor.Resources.props",
+        "devexpress.blazor.resources.24.2.3.nupkg.sha512",
+        "devexpress.blazor.resources.nuspec",
+        "lib/net8.0/DevExpress.Blazor.Resources.v24.2.dll",
+        "staticwebassets/js/analytics-core/ace.js",
+        "staticwebassets/js/analytics-core/dx-analytics-core.min.js",
+        "staticwebassets/js/analytics-core/dx-querybuilder.min.js",
+        "staticwebassets/js/analytics-core/ext-language_tools.js",
+        "staticwebassets/js/analytics-core/jquery.min.js",
+        "staticwebassets/js/analytics-core/knockout-latest.js",
+        "staticwebassets/js/devextreme/dx.all.js",
+        "staticwebassets/js/import-scripts.js"
+      ]
+    },
+    "DevExpress.Blazor.Themes/24.2.3": {
+      "sha512": "PLFwm+jz2mVNHnnqRjujvC7v3WIRHWovdUUpLKP69R93WFHXX0JYmqP/UNoNISEf/3QeO2ErrEAG+CTFXAlcrQ==",
+      "type": "package",
+      "path": "devexpress.blazor.themes/24.2.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2203,7 +2254,7 @@
         "build/Microsoft.AspNetCore.StaticWebAssets.props",
         "buildMultiTargeting/DevExpress.Blazor.Themes.props",
         "buildTransitive/DevExpress.Blazor.Themes.props",
-        "devexpress.blazor.themes.24.1.6.nupkg.sha512",
+        "devexpress.blazor.themes.24.2.3.nupkg.sha512",
         "devexpress.blazor.themes.nuspec",
         "staticwebassets/blazing-berry.bs4.css",
         "staticwebassets/blazing-berry.bs4.min.css",
@@ -2217,6 +2268,18 @@
         "staticwebassets/bootstrap-external.bs4.min.css",
         "staticwebassets/bootstrap-external.bs5.css",
         "staticwebassets/bootstrap-external.bs5.min.css",
+        "staticwebassets/fluent-dark.bs4.css",
+        "staticwebassets/fluent-dark.bs4.min.css",
+        "staticwebassets/fluent-dark.bs5.css",
+        "staticwebassets/fluent-dark.bs5.min.css",
+        "staticwebassets/fluent-dark.css",
+        "staticwebassets/fluent-dark.min.css",
+        "staticwebassets/fluent-light.bs4.css",
+        "staticwebassets/fluent-light.bs4.min.css",
+        "staticwebassets/fluent-light.bs5.css",
+        "staticwebassets/fluent-light.bs5.min.css",
+        "staticwebassets/fluent-light.css",
+        "staticwebassets/fluent-light.min.css",
         "staticwebassets/office-white.bs4.css",
         "staticwebassets/office-white.bs4.min.css",
         "staticwebassets/office-white.bs5.css",
@@ -2227,82 +2290,82 @@
         "staticwebassets/purple.bs5.min.css"
       ]
     },
-    "DevExpress.Data/24.1.6": {
-      "sha512": "LqIo7+Fm/vkCDvDuLoa2o0Swn4wlKGoQd/4gmeOLIu6kNcYqPoiR3h/VHouFNE5A99XP1Fvi5bgAzAZjD0kd7g==",
+    "DevExpress.Data/24.2.3": {
+      "sha512": "B35Z03dwKg5WCgmFNwz1gfOTubIsneMi+koh17iLHutKP1YpfvoR2hZNXDtuQqE7eL/HSuptTpwsvNtt+udQcw==",
       "type": "package",
-      "path": "devexpress.data/24.1.6",
+      "path": "devexpress.data/24.2.3",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "analyzers/dotnet/cs/DevExpress.Generator.dll",
-        "devexpress.data.24.1.6.nupkg.sha512",
+        "devexpress.data.24.2.3.nupkg.sha512",
         "devexpress.data.nuspec",
-        "lib/net452/DevExpress.Data.v24.1.dll",
-        "lib/net452/DevExpress.Data.v24.1.xml",
-        "lib/net6.0/DevExpress.Data.v24.1.dll",
-        "lib/net6.0/DevExpress.Data.v24.1.xml",
+        "lib/net462/DevExpress.Data.v24.2.dll",
+        "lib/net462/DevExpress.Data.v24.2.xml",
+        "lib/net8.0/DevExpress.Data.v24.2.dll",
+        "lib/net8.0/DevExpress.Data.v24.2.xml",
         "tools/VisualStudioToolsManifest.xml"
       ]
     },
-    "DevExpress.Drawing/24.1.6": {
-      "sha512": "ybnMt/p9e4rUS0vC8tqFlpuldNCRpEV8E+gxXWMe5DFbeceu0n8fREb6J76iQ1AhIbGNYVFRQJvJS39TO5jFXg==",
+    "DevExpress.Drawing/24.2.3": {
+      "sha512": "ks/fg5GMeZnRKxghlnxw433IslBXJNzG5xRxEj8NMSVF7xCJFjbOdJ+rSeZ00Hca/faAEcKT+Cahx6xTAdsbRg==",
       "type": "package",
-      "path": "devexpress.drawing/24.1.6",
+      "path": "devexpress.drawing/24.2.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "devexpress.drawing.24.1.6.nupkg.sha512",
+        "devexpress.drawing.24.2.3.nupkg.sha512",
         "devexpress.drawing.nuspec",
-        "lib/net452/DevExpress.Drawing.v24.1.dll",
-        "lib/net452/DevExpress.Drawing.v24.1.xml",
-        "lib/net6.0/DevExpress.Drawing.v24.1.dll",
-        "lib/net6.0/DevExpress.Drawing.v24.1.xml"
+        "lib/net462/DevExpress.Drawing.v24.2.dll",
+        "lib/net462/DevExpress.Drawing.v24.2.xml",
+        "lib/net8.0/DevExpress.Drawing.v24.2.dll",
+        "lib/net8.0/DevExpress.Drawing.v24.2.xml"
       ]
     },
-    "DevExpress.Pdf.Core/24.1.6": {
-      "sha512": "RUnN49BEgyYZ6EzDgU+SK6negC/YJa5k+a4ruFYe85T4oS+oNwuqwwDWf8a7MktPkfaKbtVNIKrtQgj2jMlcrw==",
+    "DevExpress.Pdf.Core/24.2.3": {
+      "sha512": "OT7SVpBhurLC1igYcbq6HP1QsSfV9HosrcBh18AkxYLCiQlzTbCMqApE8iE4vVS9re73ikWV/5g5guEYODPj9Q==",
       "type": "package",
-      "path": "devexpress.pdf.core/24.1.6",
+      "path": "devexpress.pdf.core/24.2.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "devexpress.pdf.core.24.1.6.nupkg.sha512",
+        "devexpress.pdf.core.24.2.3.nupkg.sha512",
         "devexpress.pdf.core.nuspec",
-        "lib/net452/DevExpress.Pdf.v24.1.Core.dll",
-        "lib/net452/DevExpress.Pdf.v24.1.Core.xml",
-        "lib/net6.0/DevExpress.Pdf.v24.1.Core.dll",
-        "lib/net6.0/DevExpress.Pdf.v24.1.Core.xml"
+        "lib/net462/DevExpress.Pdf.v24.2.Core.dll",
+        "lib/net462/DevExpress.Pdf.v24.2.Core.xml",
+        "lib/net8.0/DevExpress.Pdf.v24.2.Core.dll",
+        "lib/net8.0/DevExpress.Pdf.v24.2.Core.xml"
       ]
     },
-    "DevExpress.Pdf.Drawing/24.1.6": {
-      "sha512": "hlIJDRoHRe1Y2tn4+kQ6rH5KC4e4uY9/hg5LzxWBz5mOBKSEo6pAdm7vcRYbCqLDDGp64e1t43UhS2A1KhrIhw==",
+    "DevExpress.Pdf.Drawing/24.2.3": {
+      "sha512": "fHg5SzHeEXvcmM0hrfWzUNEy9WIshPc6TPi3U8GwvPWdS24RargWxSdtrVzeH14+YDKgFbHPA/o2vlYqdS+PeQ==",
       "type": "package",
-      "path": "devexpress.pdf.drawing/24.1.6",
+      "path": "devexpress.pdf.drawing/24.2.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "devexpress.pdf.drawing.24.1.6.nupkg.sha512",
+        "devexpress.pdf.drawing.24.2.3.nupkg.sha512",
         "devexpress.pdf.drawing.nuspec",
-        "lib/net452/DevExpress.Pdf.v24.1.Drawing.dll",
-        "lib/net452/DevExpress.Pdf.v24.1.Drawing.xml",
-        "lib/net6.0/DevExpress.Pdf.v24.1.Drawing.dll",
-        "lib/net6.0/DevExpress.Pdf.v24.1.Drawing.xml"
+        "lib/net462/DevExpress.Pdf.v24.2.Drawing.dll",
+        "lib/net462/DevExpress.Pdf.v24.2.Drawing.xml",
+        "lib/net8.0/DevExpress.Pdf.v24.2.Drawing.dll",
+        "lib/net8.0/DevExpress.Pdf.v24.2.Drawing.xml"
       ]
     },
-    "DevExpress.Printing.Core/24.1.6": {
-      "sha512": "iJHYnyUAovQdk28a5xyartWeDHIMBCeyOW49qokTwHbHOvpohSvGYPdJSlOAl0tx/+1IgY7+8DW2e977pcPtLA==",
+    "DevExpress.Printing.Core/24.2.3": {
+      "sha512": "/EB0Wr1ag7zdi7JmIQPHRXSb2pmj7X8DW2/S72x7u4nkChfTpMFSCZrYOw6EnJ1l8IbZHyeFpsWFiKgJtCPRUA==",
       "type": "package",
-      "path": "devexpress.printing.core/24.1.6",
+      "path": "devexpress.printing.core/24.2.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "devexpress.printing.core.24.1.6.nupkg.sha512",
+        "devexpress.printing.core.24.2.3.nupkg.sha512",
         "devexpress.printing.core.nuspec",
-        "lib/net452/DevExpress.Printing.v24.1.Core.dll",
-        "lib/net452/DevExpress.Printing.v24.1.Core.xml",
-        "lib/net6.0/DevExpress.Printing.v24.1.Core.dll",
-        "lib/net6.0/DevExpress.Printing.v24.1.Core.xml"
+        "lib/net462/DevExpress.Printing.v24.2.Core.dll",
+        "lib/net462/DevExpress.Printing.v24.2.Core.xml",
+        "lib/net8.0/DevExpress.Printing.v24.2.Core.dll",
+        "lib/net8.0/DevExpress.Printing.v24.2.Core.xml"
       ]
     },
     "DevExtreme.AspNet.Data/4.0.0": {
@@ -4572,39 +4635,39 @@
         "version.txt"
       ]
     },
-    "System.Security.Cryptography.Pkcs/6.0.3": {
-      "sha512": "18UT1BdZ4TYFBHk/wuq7JzCdE3X75z81X+C2rXqIlmEnC21Pm60spGV/dKQSzbyomstqYE33EuN5hfnC86VFxA==",
+    "System.Security.Cryptography.Pkcs/8.0.1": {
+      "sha512": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
       "type": "package",
-      "path": "system.security.cryptography.pkcs/6.0.3",
+      "path": "system.security.cryptography.pkcs/8.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/System.Security.Cryptography.Pkcs.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
         "buildTransitive/netcoreapp2.0/System.Security.Cryptography.Pkcs.targets",
-        "buildTransitive/netcoreapp3.1/_._",
-        "lib/net461/System.Security.Cryptography.Pkcs.dll",
-        "lib/net461/System.Security.Cryptography.Pkcs.xml",
+        "lib/net462/System.Security.Cryptography.Pkcs.dll",
+        "lib/net462/System.Security.Cryptography.Pkcs.xml",
         "lib/net6.0/System.Security.Cryptography.Pkcs.dll",
         "lib/net6.0/System.Security.Cryptography.Pkcs.xml",
-        "lib/netcoreapp3.1/System.Security.Cryptography.Pkcs.dll",
-        "lib/netcoreapp3.1/System.Security.Cryptography.Pkcs.xml",
+        "lib/net7.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net7.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net8.0/System.Security.Cryptography.Pkcs.xml",
         "lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
         "lib/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
         "lib/netstandard2.1/System.Security.Cryptography.Pkcs.dll",
         "lib/netstandard2.1/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/net461/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/net461/System.Security.Cryptography.Pkcs.xml",
         "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll",
         "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/netcoreapp3.1/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netcoreapp3.1/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/netstandard2.1/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netstandard2.1/System.Security.Cryptography.Pkcs.xml",
-        "system.security.cryptography.pkcs.6.0.3.nupkg.sha512",
+        "runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.xml",
+        "system.security.cryptography.pkcs.8.0.1.nupkg.sha512",
         "system.security.cryptography.pkcs.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -5058,7 +5121,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "CsvHelper >= 33.0.1",
-      "DevExpress.Blazor >= 24.1.6",
+      "DevExpress.Blazor >= 24.2.3",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.*-*",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.*-*",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.*-*",
@@ -5066,32 +5129,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\kaih\\.nuget\\packages\\": {},
-    "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages": {},
-    "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages": {},
-    "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\kai\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kaih\\source\\repos\\MLC\\MLC.csproj",
+      "projectUniqueName": "C:\\Users\\kai\\source\\repos\\mlc\\MLC.csproj",
       "projectName": "MLC",
-      "projectPath": "C:\\Users\\kaih\\source\\repos\\MLC\\MLC.csproj",
-      "packagesPath": "C:\\Users\\kaih\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kaih\\source\\repos\\MLC\\obj\\",
+      "projectPath": "C:\\Users\\kai\\source\\repos\\mlc\\MLC.csproj",
+      "packagesPath": "C:\\Users\\kai\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\DevExpress 23.1\\Components\\Offline Packages",
-        "C:\\Program Files\\DevExpress 23.2\\Components\\Offline Packages",
-        "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\kaih\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.1.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 23.2.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.1.config",
+        "C:\\Users\\kai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5099,9 +5157,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\DevExpress 23.1\\Components\\System\\Components\\Packages": {},
-        "C:\\Program Files\\DevExpress 23.2\\Components\\System\\Components\\Packages": {},
-        "C:\\Program Files\\DevExpress 24.1\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -5132,7 +5188,7 @@
           },
           "DevExpress.Blazor": {
             "target": "Package",
-            "version": "[24.1.6, )"
+            "version": "[24.2.3, )"
           },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",

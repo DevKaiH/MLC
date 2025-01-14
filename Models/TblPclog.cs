@@ -9,10 +9,9 @@ public partial class TblPclog
 
     public DateOnly? DateCreated { get; set; }
 
-    public int UserID { get; set; }
+    public int? UserId { get; set; }
 
     public DateOnly? DateUploaded { get; set; }
 
     public string? Status { get; set; }
- 
 }
