@@ -23,8 +23,13 @@
 <h1>Enter Expenses</h1>
 
 <DxFormLayout>
-    <DxFormLayoutItem>
-        <!-- Other content goes here -->
+
+    <DxFormLayoutItem Caption="Date">
+        <DxDateEdit NullText="Select Date..." Date="Transactiondate" DateChanged="@((DateTime? selectedValue) => dateSelected(selectedValue))" />
+    </DxFormLayoutItem>
+
+    <DxFormLayoutItem Caption="Memo">
+        <DxTextBox @bind-Text="@NewTrans.Memo" />
     </DxFormLayoutItem>
 
     <DxFormLayoutItem Caption="Bank Account">
@@ -53,12 +58,6 @@
         </ChildContent>
     </DxFormLayoutItem>
 
-    <DxFormLayoutItem Caption="Date">
-        <DxDateEdit NullText="Select Date..." Date="Transactiondate" DateChanged="@((DateTime? selectedValue) => dateSelected(selectedValue))" />
-    </DxFormLayoutItem>
-    <DxFormLayoutItem Caption="Memo">
-        <DxTextBox @bind-Text="@NewTrans.Memo" />
-    </DxFormLayoutItem>
     <DxFormLayoutItem Caption="Amount">
         <DxSpinEdit ValueChanged="@((decimal amtent) => AmtEntered(amtent))"
                     Mask="@NumericMask.Currency"
@@ -68,9 +67,35 @@
             <DxNumericMaskProperties Culture="@Culture" />
         </DxSpinEdit>
     </DxFormLayoutItem>
-    <DxFormLayoutItem Caption="Tax">
-     
+
+    <DxFormLayoutItem Caption="HST">
+        <ChildContent Context="hstContext">
+            <DxSpinEdit ValueChanged="@((decimal amtent) => AmtEntered(amtent))"
+                        Mask="@NumericMask.Currency"
+                        Increment="100"
+                        CssClass="cw-320"
+                        InputId="seMask">
+                <DxNumericMaskProperties Culture="@Culture" />
+            </DxSpinEdit>
+        </ChildContent>
     </DxFormLayoutItem>
+
+    <DxFormLayoutItem Caption="Line Item">
+        <DxTextBox @bind-Text="@NewDetail.Description" />
+    </DxFormLayoutItem>
+
+    <DxFormLayoutItem Caption="GST Recoverable">
+        <ChildContent Context="gstContext">
+            <DxTextBox @bind-Text="@gst" />
+        </ChildContent>
+    </DxFormLayoutItem>
+
+    <DxFormLayoutItem Caption="PST Recoverable">
+        <ChildContent Context="pstContext">
+            <DxTextBox @bind-Text="@pst" />
+        </ChildContent>
+    </DxFormLayoutItem>
+
     <DxFormLayoutItem Caption="Upload Receipt">
         <div class="upload-container">
             <div style="@(SelectedFilesCount > 0 ? "display: none" : string.Empty)">
@@ -121,6 +146,7 @@
     public IEnumerable<TblAccount>? AccountDS { get; set; }
     public IEnumerable<TblTransaction>? TransDS { get; set; }
     public IEnumerable<TblTransactionDetail>? DetailsDS { get; set; }
+    public IEnumerable<TblSetting>? SettingDS { get; set; }
     bool DataComplete = false;
     bool popup = false;
     bool trx = false;
@@ -131,9 +157,8 @@
     string? Memo { get; set; }
     string? Lineitem { get; set; }
     decimal amt { get; set; }
-    decimal tax { get; set; }
-    decimal gst { get; set; }
-    decimal pst { get; set; }
+    string gst { get; set; }
+    string pst { get; set; }
     private TblTransaction NewTrans = new TblTransaction();
     private TblTransactionDetail NewDetail = new TblTransactionDetail();
     private string? Message { get; set; }
@@ -153,6 +178,9 @@
         {
             trx = true;
         }
+
+        SettingDS = SS.GetTable();
+
     }  
     private async Task startTimer()
     {
@@ -232,7 +260,29 @@
     {
         NewDetail.Amount = amt;
 
-        DataComplete = true;
+        // calculate recoverable GST/PST
+
+        var HST = SettingDS.Where(s => s.Property == "HST").Select(s => s.Value).FirstOrDefault();
+        var GST = SettingDS.Where(s => s.Property == "GST").Select(s => s.Value).FirstOrDefault();
+        var PST = SettingDS.Where(s => s.Property == "PST").Select(s => s.Value).FirstOrDefault();
+        var GSTR = SettingDS.Where(s => s.Property == "GST Recover").Select(s => s.Value).FirstOrDefault();
+        var PSTR = SettingDS.Where(s => s.Property == "pST Recover").Select(s => s.Value).FirstOrDefault();
+
+        var GSTCalc = (amt * GST / (1+GST))/GST;
+        var GSTRec = GSTCalc * GSTR; 
+
+        var PSTCalc = (amt * PST / (1 + PST)) / PST;
+        var PSTRec = PSTCalc * PSTR;
+
+        gst = GSTRec.ToString();
+        pst = PSTRec.ToString();
+
+    }
+
+    public void HSTEntered(decimal amt)
+    {
+        NewDetail.Tax = amt;
+    
     }
     public void dateSelected(DateTime? selectedDate)
     {

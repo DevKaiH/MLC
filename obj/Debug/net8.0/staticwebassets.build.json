@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rf29Un6JM5NLiSHDdCHf8QZNszrQa6VHIa3LHG2m14s=",
+  "Hash": "sKjNAWpqafgnjP1nEy3HEMBDi8W/pn+8X7oDogwJL4o=",
   "Source": "MLC",
   "BasePath": "_content/MLC",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "MLC\\wwwroot",
       "Source": "MLC",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "Pattern": "**"
     }
@@ -4121,10 +4121,10 @@
       "OriginalItemSpec": "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages\\devexpress.blazor\\24.2.3\\staticwebassets\\modules\\window-resize-helper-8b32f302.js"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css",
       "SourceId": "MLC",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/MLC",
       "RelativePath": "MLC.styles.css",
       "AssetKind": "All",
@@ -4137,13 +4137,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css"
+      "OriginalItemSpec": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css",
       "SourceId": "MLC",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/MLC",
       "RelativePath": "MLC.bundle.scp.css",
       "AssetKind": "All",
@@ -4156,13 +4156,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\bootstrap\\bootstrap.css",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\bootstrap\\bootstrap.css",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/bootstrap/bootstrap.css",
       "AssetKind": "All",
@@ -4178,10 +4178,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.css"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -4197,10 +4197,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -4216,10 +4216,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -4235,10 +4235,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -4254,10 +4254,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -4273,10 +4273,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -4292,10 +4292,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -4311,10 +4311,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\FONT-LICENSE.txt",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\FONT-LICENSE.txt",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/FONT-LICENSE.txt",
       "AssetKind": "All",
@@ -4330,10 +4330,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\FONT-LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\ICON-LICENSE.txt",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\ICON-LICENSE.txt",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/ICON-LICENSE.txt",
       "AssetKind": "All",
@@ -4349,10 +4349,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\ICON-LICENSE.txt"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\open.iconic\\README.md",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\open.iconic\\README.md",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/open.iconic/README.md",
       "AssetKind": "All",
@@ -4368,10 +4368,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open.iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\site.css",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -4387,10 +4387,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\favicon.ico",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -4406,10 +4406,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\log-in.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\log-in.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/log-in.svg",
       "AssetKind": "All",
@@ -4425,10 +4425,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\log-in.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\log-out.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\log-out.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/log-out.svg",
       "AssetKind": "All",
@@ -4444,10 +4444,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\log-out.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\manage-email.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\manage-email.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/manage-email.svg",
       "AssetKind": "All",
@@ -4463,10 +4463,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\manage-email.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\manage-password.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\manage-password.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/manage-password.svg",
       "AssetKind": "All",
@@ -4482,10 +4482,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\manage-password.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\manage-personal.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\manage-personal.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/manage-personal.svg",
       "AssetKind": "All",
@@ -4501,10 +4501,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\manage-personal.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\manage-profile.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\manage-profile.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/manage-profile.svg",
       "AssetKind": "All",
@@ -4520,10 +4520,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\manage-profile.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\manage-two-factor.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\manage-two-factor.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/manage-two-factor.svg",
       "AssetKind": "All",
@@ -4539,10 +4539,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\manage-two-factor.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\providers\\facebook-logo.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\providers\\facebook-logo.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/providers/facebook-logo.svg",
       "AssetKind": "All",
@@ -4558,10 +4558,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\providers\\facebook-logo.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\providers\\google-logo.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\providers\\google-logo.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/providers/google-logo.svg",
       "AssetKind": "All",
@@ -4577,10 +4577,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\providers\\google-logo.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\providers\\microsoft-logo.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\providers\\microsoft-logo.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/providers/microsoft-logo.svg",
       "AssetKind": "All",
@@ -4596,10 +4596,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\providers\\microsoft-logo.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\providers\\x-logo.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\providers\\x-logo.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/providers/x-logo.svg",
       "AssetKind": "All",
@@ -4615,10 +4615,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\providers\\x-logo.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\settings.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\settings.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/settings.svg",
       "AssetKind": "All",
@@ -4634,10 +4634,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\settings.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\account\\user.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\account\\user.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/account/user.svg",
       "AssetKind": "All",
@@ -4653,10 +4653,10 @@
       "OriginalItemSpec": "wwwroot\\images\\account\\user.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\back.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\back.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/back.svg",
       "AssetKind": "All",
@@ -4672,10 +4672,10 @@
       "OriginalItemSpec": "wwwroot\\images\\back.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\cards.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\cards.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/cards.svg",
       "AssetKind": "All",
@@ -4691,10 +4691,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cards.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\close.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\close.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/close.svg",
       "AssetKind": "All",
@@ -4710,10 +4710,10 @@
       "OriginalItemSpec": "wwwroot\\images\\close.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\counter.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\counter.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/counter.svg",
       "AssetKind": "All",
@@ -4729,10 +4729,10 @@
       "OriginalItemSpec": "wwwroot\\images\\counter.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\demos.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\demos.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/demos.svg",
       "AssetKind": "All",
@@ -4748,10 +4748,10 @@
       "OriginalItemSpec": "wwwroot\\images\\demos.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\doc.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\doc.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/doc.svg",
       "AssetKind": "All",
@@ -4767,10 +4767,10 @@
       "OriginalItemSpec": "wwwroot\\images\\doc.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\home.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\home.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/home.svg",
       "AssetKind": "All",
@@ -4786,10 +4786,10 @@
       "OriginalItemSpec": "wwwroot\\images\\home.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\logo.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\logo.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/logo.svg",
       "AssetKind": "All",
@@ -4805,10 +4805,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logo.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\menu.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\menu.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/menu.svg",
       "AssetKind": "All",
@@ -4824,10 +4824,10 @@
       "OriginalItemSpec": "wwwroot\\images\\menu.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\images\\weather.svg",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\images\\weather.svg",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "images/weather.svg",
       "AssetKind": "All",
@@ -4843,10 +4843,10 @@
       "OriginalItemSpec": "wwwroot\\images\\weather.svg"
     },
     {
-      "Identity": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\js\\file-utils.js",
+      "Identity": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\js\\file-utils.js",
       "SourceId": "MLC",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\kai\\source\\repos\\mlc\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\",
       "BasePath": "_content/MLC",
       "RelativePath": "js/file-utils.js",
       "AssetKind": "All",
