@@ -42,12 +42,13 @@
                         Value="SelBank" />
         </ChildContent>
     </DxFormLayoutItem>
-
-    <DxFormLayoutItem Caption="Account">
-        <ChildContent Context="anotherAccountContext">
+    @if (DataComplete)
+    {
+        <DxFormLayoutItem Caption="Account">
+            <ChildContent Context="anotherAccountContext">
             <DxComboBox TData="TblAccount"
                         TValue="TblAccount"
-                        Data="AccountDS"
+                            Data="@AccountDS.Where(t => t.Type == "E")"
                         TextFieldName="@(nameof(TblAccount.Description))"
                         NullText="Select Account..."
                         Value="SelAcct"
@@ -80,20 +81,20 @@
         </ChildContent>
     </DxFormLayoutItem>
 
-    <DxFormLayoutItem Caption="Line Item">
-        <DxTextBox @bind-Text="@NewDetail.Description" />
-    </DxFormLayoutItem>
-
     <DxFormLayoutItem Caption="GST Recoverable">
         <ChildContent Context="gstContext">
-            <DxTextBox @bind-Text="@gst" />
+            <DxTextBox @bind-Text="@gstStr" />
         </ChildContent>
     </DxFormLayoutItem>
 
     <DxFormLayoutItem Caption="PST Recoverable">
         <ChildContent Context="pstContext">
-            <DxTextBox @bind-Text="@pst" />
+            <DxTextBox @bind-Text="@pstStr" />
         </ChildContent>
+    </DxFormLayoutItem>
+
+    <DxFormLayoutItem Caption="Detail Description">   
+    <DxTextBox Text="@NewDetail.Description" TextChanged="@OnDescriptionChanged" />
     </DxFormLayoutItem>
 
     <DxFormLayoutItem Caption="Upload Receipt">
@@ -109,6 +110,7 @@
             </DxFileInput>
         </div>
     </DxFormLayoutItem>
+    }
 </DxFormLayout>
 
 
@@ -129,7 +131,7 @@
     </TotalSummary>
 </DxGrid>
 
-<DxButton Enabled="DataComplete" Click="SavePMT">Submit</DxButton>
+<DxButton Enabled="DetailComplete" Click="SavePMT">Submit</DxButton>
 <DxButton Enabled="trx" Click="() => PCFile()">Create PC File</DxButton>
 <DxPopup Visible="@popup" HeaderText="@popheader" Closing="warningClosed">
 
@@ -148,6 +150,7 @@
     public IEnumerable<TblTransactionDetail>? DetailsDS { get; set; }
     public IEnumerable<TblSetting>? SettingDS { get; set; }
     bool DataComplete = false;
+    bool DetailComplete = false;
     bool popup = false;
     bool trx = false;
     string? popheader { get; set; }
@@ -157,11 +160,13 @@
     string? Memo { get; set; }
     string? Lineitem { get; set; }
     decimal amt { get; set; }
-    string gst { get; set; }
-    string pst { get; set; }
+    decimal gst { get; set; }
+    decimal pst { get; set; }
+    string gstStr { get; set; }
+    string pstStr { get; set; }
     private TblTransaction NewTrans = new TblTransaction();
     private TblTransactionDetail NewDetail = new TblTransactionDetail();
-    private string? Message { get; set; }
+    public string? Message { get; set; }
     public string? Filename { get; set; }
     private VRecipient? SelectedPerson;
     private TblAccount? SelAcct;
@@ -172,7 +177,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        AccountDS = Accounts.GetAccounts("E");
+        AccountDS = Accounts.GetAccounts();
         Reloadgrid();
         if (TransDS.Count() > 0)
         {
@@ -196,51 +201,8 @@
          warningClosed();
          StateHasChanged();
      });
-
-    }
-    // Save new payment request
-
-    public void SavePMT()
-    {
-        TransID = Trans.AddTransaction(NewTrans);
-        NewTrans.Account = SelBank.Id;
-        NewTrans.Transactiondate = Transactiondate;
-        NewTrans.Memo = Memo;
-        if(TransID == 0)
-        {
-            Message = "An Error occured saving your transaction";
-        }
-        else
-        {
-            Message = "Your transaction was saved, # " + TransID.ToString();
-        }
-        ;
-        Reloadgrid();
-        popheader = "Payment Saved";
-        popup = true;
-        startTimer();
-
-        // Clear objects
-
-        NewTrans = new TblTransaction();       
     }
 
-    public void SavePMTDetail()
-    {
-        NewDetail.Account = SelAcct.Id;
-        NewDetail.TransactionId = TransID;
-        NewDetail.Description = Lineitem;
-        NewDetail.Filename = Filename;        
-        Message = Trans.AddDetail(NewDetail);
-        Reloadgrid();
-        popheader = "Detail Saved";
-        popup = true;
-        startTimer();
-
-        // Clear objects
-
-        NewTrans = new TblTransaction();
-    }
     public void Reloadgrid()
     {
         TransDS = new List<TblTransaction>(Trans.GetList());
@@ -274,15 +236,15 @@
         var PSTCalc = (amt * PST / (1 + PST)) / PST;
         var PSTRec = PSTCalc * PSTR;
 
-        gst = GSTRec.ToString();
-        pst = PSTRec.ToString();
+        gstStr = GSTRec.ToString();
+        pstStr = PSTRec.ToString();
 
     }
 
     public void HSTEntered(decimal amt)
     {
         NewDetail.Tax = amt;
-    
+
     }
     public void dateSelected(DateTime? selectedDate)
     {
@@ -291,10 +253,18 @@
     public void BankSelected(TblAccount acct)
     {
         SelBank = acct;
+        SavePMT();
+        DataComplete = true;
     }
     public void AcctSelected(TblAccount acct)
     {
         SelAcct = acct;
+    }
+    private void OnDescriptionChanged(string newValue)
+    {
+        NewDetail.Description = newValue;
+
+        DetailComplete = true;
     }
     async Task DeleteTransaction(GridDataItemDeletingEventArgs e)
     {
@@ -313,6 +283,39 @@
 
             Reloadgrid();
         }
+    }
+     // Save new payment request
+
+    public void SavePMT()
+    {
+        NewTrans.Account = SelBank.Id;
+        NewTrans.Transactiondate = Transactiondate;
+        NewTrans.Memo = Memo;
+        TransID = Trans.AddTransaction(NewTrans);
+        if(TransID == 0)
+        {
+            Message = "An Error occured saving your transaction";
+        }                
+    }
+
+    public void SavePMTDetail()
+    {
+        NewDetail.Account = SelAcct.Id;
+        NewDetail.TransactionId = TransID;
+        NewDetail.Description = Lineitem;
+        NewDetail.Filename = Filename;
+        NewDetail.Gst = gst;
+        NewDetail.Pst = pst;    
+       
+        Message = Trans.AddDetail(NewDetail);
+        Reloadgrid();
+        popheader = "Detail Saved";
+        popup = true;
+        startTimer();
+
+        // Clear objects
+
+        NewTrans = new TblTransaction();
     }
     public async Task PCFile()
     {

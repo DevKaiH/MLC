@@ -113,7 +113,7 @@
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        AccountDS = Accounts.GetAccounts("E"); 
+        AccountDS = Accounts.GetAccounts(); 
         userDS = Users.getUsers();       
     }  
     private async Task startTimer()
