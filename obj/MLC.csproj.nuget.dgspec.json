@@ -11,7 +11,7 @@
         "projectName": "MLC",
         "projectPath": "C:\\Users\\kai\\source\\repos\\MLC\\MLC.csproj",
         "packagesPath": "C:\\Users\\kai\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kai\\source\\repos\\mlc\\obj\\",
+        "outputPath": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
@@ -47,7 +47,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -97,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -377,3 +377,7 @@ C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\refint\MLC.dll
 C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\MLC.pdb
 C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\MLC.genruntimeconfig.cache
 C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\ref\MLC.dll
+C:\Users\kai\source\repos\MLC\bin\Debug\net8.0\MLC.staticwebassets.endpoints.json
+C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\staticwebassets\msbuild.MLC.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

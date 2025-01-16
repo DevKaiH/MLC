@@ -35,87 +35,89 @@
     <DxFormLayoutItem Caption="Bank Account">
         <ChildContent Context="accountContext">
             <DxComboBox TData="TblAccount"
-                        TValue="TblAccount"
-                        Data="@AccountDS.Where(t => t.Type == "B")"
-                        TextFieldName="@(nameof(TblAccount.Acct))"
-                        ValueChanged="@((TblAccount selAcct) => BankSelected(selAcct))"
-                        Value="SelBank" />
+            TValue="TblAccount"
+            Data="@AccountDS.Where(t => t.Type == "B")"
+            TextFieldName="@(nameof(TblAccount.Acct))"
+            ValueChanged="@((TblAccount selAcct) => BankSelected(selAcct))"
+            Value="SelBank" />
         </ChildContent>
     </DxFormLayoutItem>
     @if (DataComplete)
     {
         <DxFormLayoutItem Caption="Account">
             <ChildContent Context="anotherAccountContext">
-            <DxComboBox TData="TblAccount"
-                        TValue="TblAccount"
-                            Data="@AccountDS.Where(t => t.Type == "E")"
-                        TextFieldName="@(nameof(TblAccount.Description))"
-                        NullText="Select Account..."
-                        Value="SelAcct"
-                        ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
-                        ValueExpression="@( () => SelAcct )"
-                        TextExpression="@( () => SelAcct.Description )"
-                        FilteringMode="DataGridFilteringMode.Contains" />
-        </ChildContent>
-    </DxFormLayoutItem>
+                <DxComboBox TData="TblAccount"
+                TValue="TblAccount"
+                Data="@AccountDS.Where(t => t.Type == "E")"
+                TextFieldName="@(nameof(TblAccount.Description))"
+                NullText="Select Account..."
+                Value="SelAcct"
+                ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
+                ValueExpression="@( () => SelAcct )"
+                TextExpression="@( () => SelAcct.Description )"
+                FilteringMode="DataGridFilteringMode.Contains" />
+            </ChildContent>
+        </DxFormLayoutItem>
 
-    <DxFormLayoutItem Caption="Amount">
-        <DxSpinEdit ValueChanged="@((decimal amtent) => AmtEntered(amtent))"
-                    Mask="@NumericMask.Currency"
-                    Increment="100"
-                    CssClass="cw-320"
-                    InputId="seMask">
-            <DxNumericMaskProperties Culture="@Culture" />
-        </DxSpinEdit>
-    </DxFormLayoutItem>
-
-    <DxFormLayoutItem Caption="HST">
-        <ChildContent Context="hstContext">
+        <DxFormLayoutItem Caption="Amount">
             <DxSpinEdit ValueChanged="@((decimal amtent) => AmtEntered(amtent))"
-                        Mask="@NumericMask.Currency"
-                        Increment="100"
-                        CssClass="cw-320"
-                        InputId="seMask">
+            Mask="@NumericMask.Currency"
+            Increment="100"
+            CssClass="cw-320"
+            InputId="seMask">
                 <DxNumericMaskProperties Culture="@Culture" />
             </DxSpinEdit>
-        </ChildContent>
-    </DxFormLayoutItem>
+        </DxFormLayoutItem>
 
-    <DxFormLayoutItem Caption="GST Recoverable">
-        <ChildContent Context="gstContext">
-            <DxTextBox @bind-Text="@gstStr" />
-        </ChildContent>
-    </DxFormLayoutItem>
+        <DxFormLayoutItem Caption="HST">
+            <ChildContent Context="hstContext">
+              <DxSpinEdit TValue="decimal"          
+           ValueChanged="@((decimal amtent) => TaxEntered(amtent))"
+           Mask="@NumericMask.Currency"
+           Increment="100"
+           CssClass="cw-320"
+           InputId="seMask">
+    <DxNumericMaskProperties Culture="@Culture" />
+</DxSpinEdit>
 
-    <DxFormLayoutItem Caption="PST Recoverable">
-        <ChildContent Context="pstContext">
-            <DxTextBox @bind-Text="@pstStr" />
-        </ChildContent>
-    </DxFormLayoutItem>
+            </ChildContent>
+        </DxFormLayoutItem>
 
-    <DxFormLayoutItem Caption="Detail Description">   
-    <DxTextBox Text="@NewDetail.Description" TextChanged="@OnDescriptionChanged" />
-    </DxFormLayoutItem>
+        <DxFormLayoutItem Caption="GST Recoverable">
+            <ChildContent Context="gstContext">
+                <DxTextBox @bind-Text="@gstStr" />
+            </ChildContent>
+        </DxFormLayoutItem>
 
-    <DxFormLayoutItem Caption="Upload Receipt">
-        <div class="upload-container">
-            <div style="@(SelectedFilesCount > 0 ? "display: none" : string.Empty)">
-                <span class="drop-file-icon mb-3"></span>
-                <span class="drop-file-label mb-3">Click the Select File button to select files</span>
+        <DxFormLayoutItem Caption="PST Recoverable">
+            <ChildContent Context="pstContext">
+                <DxTextBox @bind-Text="@pstStr" />
+            </ChildContent>
+        </DxFormLayoutItem>
+
+        <DxFormLayoutItem Caption="Detail Description">   
+            <DxTextBox Text="@NewDetail.Description" TextChanged="@OnDescriptionChanged" />
+        </DxFormLayoutItem>
+
+        <DxFormLayoutItem Caption="Upload Receipt">
+            <div class="upload-container">
+                <div style="@(SelectedFilesCount > 0 ? "display: none" : string.Empty)">
+                    <span class="drop-file-icon mb-3"></span>
+                    <span class="drop-file-label mb-3">Click the Select File button to select files</span>
+                </div>
+                <DxFileInput AllowMultiFileUpload="true"
+                SelectedFilesChanged="@SelectedFilesChanged"
+                MaxFileSize="15000000"
+                FilesUploading="OnFilesUploading">
+                </DxFileInput>
             </div>
-            <DxFileInput AllowMultiFileUpload="true"
-                         SelectedFilesChanged="@SelectedFilesChanged"
-                         MaxFileSize="15000000"
-                         FilesUploading="OnFilesUploading">
-            </DxFileInput>
-        </div>
-    </DxFormLayoutItem>
+        </DxFormLayoutItem>
     }
 </DxFormLayout>
 
 
 <DxGrid Data="TransDS" DataItemDeleting="DeleteTransaction" ColumnResizeMode="GridColumnResizeMode.ColumnsContainer" TextWrapEnabled=true>
-    
+
     <Columns>
         <DxGridDataColumn FieldName="Transactiondate"/>
         <DxGridDataColumn FieldName="Memo" />
@@ -131,7 +133,7 @@
     </TotalSummary>
 </DxGrid>
 
-<DxButton Enabled="DetailComplete" Click="SavePMT">Submit</DxButton>
+<DxButton Enabled="DetailComplete" Click="SavePMTDetail">Submit</DxButton>
 <DxButton Enabled="trx" Click="() => PCFile()">Create PC File</DxButton>
 <DxPopup Visible="@popup" HeaderText="@popheader" Closing="warningClosed">
 
@@ -157,8 +159,6 @@
     int SelectedFilesCount { get; set; }
     int TransID {get; set; }
     DateTime? Transactiondate { get; set; }
-    string? Memo { get; set; }
-    string? Lineitem { get; set; }
     decimal amt { get; set; }
     decimal gst { get; set; }
     decimal pst { get; set; }
@@ -221,30 +221,47 @@
     public void AmtEntered(decimal amt)
     {
         NewDetail.Amount = amt;
-
-        // calculate recoverable GST/PST
+        calcTax();
+    }
+    public void TaxEntered(decimal amt)
+    {
+        NewDetail.Tax = amt;
+        calcTax();
+    }
+    public void calcTax()
+    {
+        // Get constants from setting table
 
         var HST = SettingDS.Where(s => s.Property == "HST").Select(s => s.Value).FirstOrDefault();
         var GST = SettingDS.Where(s => s.Property == "GST").Select(s => s.Value).FirstOrDefault();
         var PST = SettingDS.Where(s => s.Property == "PST").Select(s => s.Value).FirstOrDefault();
         var GSTR = SettingDS.Where(s => s.Property == "GST Recover").Select(s => s.Value).FirstOrDefault();
-        var PSTR = SettingDS.Where(s => s.Property == "pST Recover").Select(s => s.Value).FirstOrDefault();
+        var PSTR = SettingDS.Where(s => s.Property == "PST Recover").Select(s => s.Value).FirstOrDefault();
 
-        var GSTCalc = (amt * GST / (1+GST))/GST;
-        var GSTRec = GSTCalc * GSTR; 
+        // calculate HST
 
-        var PSTCalc = (amt * PST / (1 + PST)) / PST;
+        var HSTCalc = (NewDetail.Amount * HST / (1 + HST)) ;
+
+        // calculate GST
+
+        var GSTCalc = HSTCalc / (HST*100) * GST * 100;
+        var GSTRec = GSTCalc * GSTR;
+
+        // calculate PST
+
+        var PSTCalc = HSTCalc / (HST * 100) * PST * 100;
         var PSTRec = PSTCalc * PSTR;
 
-        gstStr = GSTRec.ToString();
-        pstStr = PSTRec.ToString();
+        NewDetail.Gst = GSTRec;
+        NewDetail.Pst = PSTRec;
+
+        gstStr = String.Format(new CultureInfo("en-CA"), "{0:C}", GSTRec);
+        pstStr = String.Format(new CultureInfo("en-CA"), "{0:C}", PSTRec);
 
     }
-
     public void HSTEntered(decimal amt)
     {
         NewDetail.Tax = amt;
-
     }
     public void dateSelected(DateTime? selectedDate)
     {
@@ -290,7 +307,6 @@
     {
         NewTrans.Account = SelBank.Id;
         NewTrans.Transactiondate = Transactiondate;
-        NewTrans.Memo = Memo;
         TransID = Trans.AddTransaction(NewTrans);
         if(TransID == 0)
         {
@@ -302,10 +318,7 @@
     {
         NewDetail.Account = SelAcct.Id;
         NewDetail.TransactionId = TransID;
-        NewDetail.Description = Lineitem;
         NewDetail.Filename = Filename;
-        NewDetail.Gst = gst;
-        NewDetail.Pst = pst;    
        
         Message = Trans.AddDetail(NewDetail);
         Reloadgrid();
