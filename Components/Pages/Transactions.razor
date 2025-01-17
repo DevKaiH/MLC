@@ -71,14 +71,13 @@
 
         <DxFormLayoutItem Caption="HST">
             <ChildContent Context="hstContext">
-              <DxSpinEdit TValue="decimal"          
-           ValueChanged="@((decimal amtent) => TaxEntered(amtent))"
-           Mask="@NumericMask.Currency"
-           Increment="100"
-           CssClass="cw-320"
-           InputId="seMask">
-    <DxNumericMaskProperties Culture="@Culture" />
-</DxSpinEdit>
+                <DxSpinEdit @bind-Value="@hst"                           
+                Mask="@NumericMask.Currency"
+                Increment="100"
+                CssClass="cw-320"
+                InputId="seMask">
+                    <DxNumericMaskProperties Culture="@Culture" />
+                </DxSpinEdit>
 
             </ChildContent>
         </DxFormLayoutItem>
@@ -159,6 +158,7 @@
     int SelectedFilesCount { get; set; }
     int TransID {get; set; }
     DateTime? Transactiondate { get; set; }
+    decimal? hst { get; set;}
     decimal amt { get; set; }
     decimal gst { get; set; }
     decimal pst { get; set; }
@@ -240,16 +240,16 @@
 
         // calculate HST
 
-        var HSTCalc = (NewDetail.Amount * HST / (1 + HST)) ;
+        hst = (NewDetail.Amount * HST / (1 + HST)) ;      
 
         // calculate GST
 
-        var GSTCalc = HSTCalc / (HST*100) * GST * 100;
+        var GSTCalc = hst / (HST*100) * GST * 100;
         var GSTRec = GSTCalc * GSTR;
 
         // calculate PST
 
-        var PSTCalc = HSTCalc / (HST * 100) * PST * 100;
+        var PSTCalc = hst / (HST * 100) * PST * 100;
         var PSTRec = PSTCalc * PSTR;
 
         NewDetail.Gst = GSTRec;
