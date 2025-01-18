@@ -162,6 +162,7 @@ public partial class MlcdataContext : DbContext
         {
             entity.ToTable("tblTransactions");
 
+            entity.Property(e => e.AddTime).HasColumnType("datetime");
             entity.Property(e => e.AddUser)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -175,6 +176,10 @@ public partial class MlcdataContext : DbContext
 
             entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Amount).HasColumnType("money");
+            entity.Property(e => e.ApproveDate).HasColumnType("datetime");
+            entity.Property(e => e.Approver)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.Description).IsUnicode(false);
             entity.Property(e => e.Filename).IsUnicode(false);
             entity.Property(e => e.Gst)

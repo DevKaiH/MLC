@@ -22,4 +22,10 @@ public partial class TblTransactionDetail
     public decimal? Gst { get; set; }
 
     public decimal? Pst { get; set; }
+
+    public bool? Approved { get; set; }
+
+    public string? Approver { get; set; }
+
+    public DateTime? ApproveDate { get; set; }
 }

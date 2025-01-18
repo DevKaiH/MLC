@@ -20,31 +20,29 @@
 
 <PageTitle>Transactions</PageTitle>
 
-<h1>Enter Expenses</h1>
-
 <DxFormLayout>
 
-    <DxFormLayoutItem Caption="Date">
-        <DxDateEdit NullText="Select Date..." Date="Transactiondate" DateChanged="@((DateTime? selectedValue) => dateSelected(selectedValue))" />
+    <DxFormLayoutItem Caption="Date" ColSpanSm="3" >
+        <DxDateEdit NullText="Select Date..." Date="Transactiondate" Enabled="!DataComplete" DateChanged="@((DateTime? selectedValue) => dateSelected(selectedValue))" />
     </DxFormLayoutItem>
 
-    <DxFormLayoutItem Caption="Memo">
-        <DxTextBox @bind-Text="@NewTrans.Memo" />
+    <DxFormLayoutItem Caption="Memo" ColSpanSm="3" >
+        <DxTextBox Enabled="!DataComplete"@bind-Text="@NewTrans.Memo" />
     </DxFormLayoutItem>
 
-    <DxFormLayoutItem Caption="Bank Account">
+    <DxFormLayoutItem Caption="Bank Account" ColSpanSm="3">
         <ChildContent Context="accountContext">
-            <DxComboBox TData="TblAccount"
+            <DxComboBox TData="TblAccount" Enabled="!DataComplete"
             TValue="TblAccount"
             Data="@AccountDS.Where(t => t.Type == "B")"
-            TextFieldName="@(nameof(TblAccount.Acct))"
+            TextFieldName="@(nameof(TblAccount.Description))"
             ValueChanged="@((TblAccount selAcct) => BankSelected(selAcct))"
             Value="SelBank" />
         </ChildContent>
     </DxFormLayoutItem>
     @if (DataComplete)
     {
-        <DxFormLayoutItem Caption="Account">
+        <DxFormLayoutItem Caption="Account" ColSpanSm="3">
             <ChildContent Context="anotherAccountContext">
                 <DxComboBox TData="TblAccount"
                 TValue="TblAccount"
@@ -54,12 +52,11 @@
                 Value="SelAcct"
                 ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
                 ValueExpression="@( () => SelAcct )"
-                TextExpression="@( () => SelAcct.Description )"
-                FilteringMode="DataGridFilteringMode.Contains" />
+                TextExpression="@( () => SelAcct.Description )"/>               
             </ChildContent>
         </DxFormLayoutItem>
 
-        <DxFormLayoutItem Caption="Amount">
+        <DxFormLayoutItem Caption="Amount" ColSpanSm="3">
             <DxSpinEdit ValueChanged="@((decimal amtent) => AmtEntered(amtent))"
             Mask="@NumericMask.Currency"
             Increment="100"
@@ -69,7 +66,7 @@
             </DxSpinEdit>
         </DxFormLayoutItem>
 
-        <DxFormLayoutItem Caption="HST">
+        <DxFormLayoutItem Caption="HST" ColSpanSm="3">
             <ChildContent Context="hstContext">
                 <DxSpinEdit @bind-Value="@hst"                           
                 Mask="@NumericMask.Currency"
@@ -82,19 +79,19 @@
             </ChildContent>
         </DxFormLayoutItem>
 
-        <DxFormLayoutItem Caption="GST Recoverable">
+        <DxFormLayoutItem Caption="GST Recoverable" ColSpanSm="3">
             <ChildContent Context="gstContext">
                 <DxTextBox @bind-Text="@gstStr" />
             </ChildContent>
         </DxFormLayoutItem>
 
-        <DxFormLayoutItem Caption="PST Recoverable">
+        <DxFormLayoutItem Caption="PST Recoverable" ColSpanSm="3">
             <ChildContent Context="pstContext">
                 <DxTextBox @bind-Text="@pstStr" />
             </ChildContent>
         </DxFormLayoutItem>
 
-        <DxFormLayoutItem Caption="Detail Description">   
+        <DxFormLayoutItem Caption="Detail Description" ColSpanSm="3">
             <DxTextBox Text="@NewDetail.Description" TextChanged="@OnDescriptionChanged" />
         </DxFormLayoutItem>
 
@@ -118,21 +115,15 @@
 <DxGrid Data="TransDS" DataItemDeleting="DeleteTransaction" ColumnResizeMode="GridColumnResizeMode.ColumnsContainer" TextWrapEnabled=true>
 
     <Columns>
-        <DxGridDataColumn FieldName="Transactiondate"/>
         <DxGridDataColumn FieldName="Memo" />
-
-
-        <DxGridCommandColumn VisibleIndex="5" EditButtonVisible="false" NewButtonVisible="false" />
+        <DxGridDataColumn FieldName="Transactiondate"/>
+        <DxGridCommandColumn VisibleIndex="3" EditButtonVisible="false" NewButtonVisible="false" />
     </Columns>
-    <GroupSummary>
-        <DxGridSummaryItem FieldName="Amount" SummaryType="GridSummaryItemType.Sum" />
-    </GroupSummary>
-    <TotalSummary>
-        <DxGridSummaryItem FieldName="Amount" SummaryType="GridSummaryItemType.Sum" FooterColumnName="Amount" />
-    </TotalSummary>
+
 </DxGrid>
 
-<DxButton Enabled="DetailComplete" Click="SavePMTDetail">Submit</DxButton>
+<DxButton Enabled="DetailComplete" Click="SavePMTDetail">Save</DxButton>
+<DxButton Enabled="DetailComplete" Click="SavePMTDetail">New</DxButton>
 <DxButton Enabled="trx" Click="() => PCFile()">Create PC File</DxButton>
 <DxPopup Visible="@popup" HeaderText="@popheader" Closing="warningClosed">
 
@@ -152,6 +143,7 @@
     public IEnumerable<TblSetting>? SettingDS { get; set; }
     bool DataComplete = false;
     bool DetailComplete = false;
+    bool DetailSaved = false;
     bool popup = false;
     bool trx = false;
     string? popheader { get; set; }
@@ -162,8 +154,8 @@
     decimal amt { get; set; }
     decimal gst { get; set; }
     decimal pst { get; set; }
-    string gstStr { get; set; }
-    string pstStr { get; set; }
+    string ?gstStr { get; set; }
+    string ?pstStr { get; set; }
     private TblTransaction NewTrans = new TblTransaction();
     private TblTransactionDetail NewDetail = new TblTransactionDetail();
     public string? Message { get; set; }
@@ -254,6 +246,7 @@
 
         NewDetail.Gst = GSTRec;
         NewDetail.Pst = PSTRec;
+        NewDetail.Tax = hst;
 
         gstStr = String.Format(new CultureInfo("en-CA"), "{0:C}", GSTRec);
         pstStr = String.Format(new CultureInfo("en-CA"), "{0:C}", PSTRec);
@@ -261,7 +254,7 @@
     }
     public void HSTEntered(decimal amt)
     {
-        NewDetail.Tax = amt;
+        NewDetail.Tax = hst;
     }
     public void dateSelected(DateTime? selectedDate)
     {
@@ -301,7 +294,7 @@
             Reloadgrid();
         }
     }
-     // Save new payment request
+    // Save new payment request
 
     public void SavePMT()
     {
@@ -319,16 +312,30 @@
         NewDetail.Account = SelAcct.Id;
         NewDetail.TransactionId = TransID;
         NewDetail.Filename = Filename;
-       
+
         Message = Trans.AddDetail(NewDetail);
         Reloadgrid();
         popheader = "Detail Saved";
         popup = true;
         startTimer();
 
+        NewDetail = new TblTransactionDetail();
+        DetailSaved = true;
+    }
+    public void ClearForm()
+    {
         // Clear objects
 
         NewTrans = new TblTransaction();
+        DetailComplete = false;
+        DetailSaved = false;
+        amt = 0;
+        hst = 0;
+        gst = 0;
+        pst = 0;
+        gstStr = null;
+        pstStr = null;
+
     }
     public async Task PCFile()
     {
