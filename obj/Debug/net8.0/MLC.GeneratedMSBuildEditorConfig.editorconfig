@@ -67,3 +67,7 @@ build_metadata.AdditionalFiles.CssScope = b-kfb4c4kr3h
 [C:/Users/kai/source/repos/MLC/Components/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-0cqkha8uwk
+
+[C:/Users/kai/source/repos/MLC/Components/Pages/TransactionDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xUcmFuc2FjdGlvbkRldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ehsd2kotzs

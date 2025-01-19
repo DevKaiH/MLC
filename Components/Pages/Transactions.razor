@@ -112,13 +112,21 @@
 </DxFormLayout>
 
 
-<DxGrid Data="TransDS" DataItemDeleting="DeleteTransaction" ColumnResizeMode="GridColumnResizeMode.ColumnsContainer" TextWrapEnabled=true>
+<DxGrid Data="TransDS" DataItemDeleting="DeleteTransaction" 
+        ShowGroupPanel="true" TextWrapEnabled="false" AutoExpandAllGroupRows="true"
+        FilterMenuButtonDisplayMode="GridFilterMenuButtonDisplayMode.Always"
+        ShowSearchBox="true" ColumnResizeMode="GridColumnResizeMode.NextColumn"
+        AllowSelectRowByClick="true"  PageSize="15"
+        HighlightRowOnHover="true">
 
     <Columns>
         <DxGridDataColumn FieldName="Memo" />
         <DxGridDataColumn FieldName="Transactiondate"/>
         <DxGridCommandColumn VisibleIndex="3" EditButtonVisible="false" NewButtonVisible="false" />
     </Columns>
+    <DetailRowTemplate>
+        <TransactionDetails Transaction="@((context.DataItem as TblTransaction).Id)" />        
+    </DetailRowTemplate>
 
 </DxGrid>
 

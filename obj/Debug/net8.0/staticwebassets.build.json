@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DZEKYwl8cOE9tmvg3qiicEbcOfwd8JzDOOMFIinMkkU=",
+  "Hash": "n7D/VW0s0fghXXYmZKadEJWCedy6Lwvwj0Kv1jvhpNU=",
   "Source": "MLC",
   "BasePath": "_content/MLC",
   "Mode": "Default",
@@ -4567,8 +4567,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "756tze95cw",
-      "Integrity": "W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y=",
+      "Fingerprint": "4ml8dammlg",
+      "Integrity": "lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css"
@@ -4588,8 +4588,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "756tze95cw",
-      "Integrity": "W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y=",
+      "Fingerprint": "4ml8dammlg",
+      "Integrity": "lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css"
@@ -16400,7 +16400,7 @@
       ]
     },
     {
-      "Route": "MLC.756tze95cw.bundle.scp.css",
+      "Route": "MLC.4ml8dammlg.bundle.scp.css",
       "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -16410,7 +16410,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8760"
+          "Value": "10515"
         },
         {
           "Name": "Content-Type",
@@ -16418,11 +16418,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y=\""
+          "Value": "\"lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 15 Jan 2025 03:07:01 GMT"
+          "Value": "Sun, 19 Jan 2025 03:32:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16432,7 +16432,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "756tze95cw"
+          "Value": "4ml8dammlg"
         },
         {
           "Name": "label",
@@ -16440,12 +16440,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y="
+          "Value": "sha256-lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI="
         }
       ]
     },
     {
-      "Route": "MLC.756tze95cw.styles.css",
+      "Route": "MLC.4ml8dammlg.styles.css",
       "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -16455,7 +16455,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8760"
+          "Value": "10515"
         },
         {
           "Name": "Content-Type",
@@ -16463,11 +16463,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y=\""
+          "Value": "\"lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 15 Jan 2025 03:07:01 GMT"
+          "Value": "Sun, 19 Jan 2025 03:32:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16477,7 +16477,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "756tze95cw"
+          "Value": "4ml8dammlg"
         },
         {
           "Name": "label",
@@ -16485,7 +16485,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y="
+          "Value": "sha256-lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI="
         }
       ]
     },
@@ -16500,7 +16500,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8760"
+          "Value": "10515"
         },
         {
           "Name": "Content-Type",
@@ -16508,11 +16508,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y=\""
+          "Value": "\"lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 15 Jan 2025 03:07:01 GMT"
+          "Value": "Sun, 19 Jan 2025 03:32:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16522,7 +16522,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y="
+          "Value": "sha256-lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI="
         }
       ]
     },
@@ -16537,7 +16537,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "8760"
+          "Value": "10515"
         },
         {
           "Name": "Content-Type",
@@ -16545,11 +16545,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y=\""
+          "Value": "\"lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 15 Jan 2025 03:07:01 GMT"
+          "Value": "Sun, 19 Jan 2025 03:32:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16559,7 +16559,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-W491L0CU0YdDlXgNfRR6dFcADO2CprCwR3j9wsM/X+Y="
+          "Value": "sha256-lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI="
         }
       ]
     }

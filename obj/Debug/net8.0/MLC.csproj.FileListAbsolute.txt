@@ -381,3 +381,4 @@ C:\Users\kai\source\repos\MLC\bin\Debug\net8.0\MLC.staticwebassets.endpoints.jso
 C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\staticwebassets\msbuild.MLC.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\kai\source\repos\MLC\obj\Debug\net8.0\scopedcss\Components\Pages\TransactionDetails.razor.rz.scp.css

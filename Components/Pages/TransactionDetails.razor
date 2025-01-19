@@ -1,0 +1,53 @@
+﻿@using MLC.Services
+@using MLC.Models
+@inject ITRANSSVC Trans
+
+<DxGrid Data="DetailsDS" DataItemDeleting="DeleteLineItem"
+ShowGroupPanel="true" TextWrapEnabled="false" AutoExpandAllGroupRows="true"
+FilterMenuButtonDisplayMode="GridFilterMenuButtonDisplayMode.Always"
+ShowSearchBox="true" ColumnResizeMode="GridColumnResizeMode.NextColumn"
+AllowSelectRowByClick="true" PageSize="15"
+HighlightRowOnHover="true">
+
+    <Columns>
+        <DxGridDataColumn FieldName="Description" />
+        <DxGridDataColumn FieldName="Gst" />
+        <DxGridDataColumn FieldName="Pst" />
+        <DxGridDataColumn FieldName="Amount" />
+        <DxGridCommandColumn VisibleIndex="3" EditButtonVisible="false" NewButtonVisible="false" />
+    </Columns>
+
+</DxGrid>
+@code
+{
+    [Parameter] public int Transaction { get; set; }
+    public IEnumerable<TblTransactionDetail>? DetailsDS { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DetailsDS = Trans.GetDetails(Transaction);
+    }
+    public void Reloadgrid()
+    {
+        DetailsDS = new List<TblTransactionDetail>(Trans.GetDetails(Transaction));
+    }
+    public void DeleteLineItem(GridDataItemDeletingEventArgs e)
+    {
+        if (e.DataItem is MLC.Models.TblTransactionDetail transdetail)
+        {
+            var delItem = new TblTransactionDetail
+                {
+                    Id = transdetail.Id
+                };
+
+            // Delete selected payment record
+
+            Trans.DeleteDetail(delItem);
+
+            // reload grid
+
+            Reloadgrid();
+        }
+
+    }
+}
