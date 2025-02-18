@@ -52,6 +52,7 @@
                 Value="SelAcct"
                 ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
                 ValueExpression="@( () => SelAcct )"
+                FilteringMode="DataGridFilteringMode.Contains"
                 TextExpression="@( () => SelAcct.Description )"/>               
             </ChildContent>
         </DxFormLayoutItem>
@@ -113,11 +114,11 @@
 
 
 <DxGrid Data="TransDS" DataItemDeleting="DeleteTransaction" 
-        ShowGroupPanel="true" TextWrapEnabled="false" AutoExpandAllGroupRows="true"
-        FilterMenuButtonDisplayMode="GridFilterMenuButtonDisplayMode.Always"
-        ShowSearchBox="true" ColumnResizeMode="GridColumnResizeMode.NextColumn"
-        AllowSelectRowByClick="true"  PageSize="15"
-        HighlightRowOnHover="true">
+ShowGroupPanel="true" TextWrapEnabled="false" AutoExpandAllGroupRows="true"
+FilterMenuButtonDisplayMode="GridFilterMenuButtonDisplayMode.Always"
+ShowSearchBox="true" ColumnResizeMode="GridColumnResizeMode.NextColumn"
+AllowSelectRowByClick="true"  PageSize="15"
+HighlightRowOnHover="true">
 
     <Columns>
         <DxGridDataColumn FieldName="Memo" />
@@ -131,7 +132,7 @@
 </DxGrid>
 
 <DxButton Enabled="DetailComplete" Click="SavePMTDetail">Save</DxButton>
-<DxButton Enabled="DetailComplete" Click="SavePMTDetail">New</DxButton>
+<DxButton Enabled="DetailComplete" Click="ClearForm">New</DxButton>
 <DxButton Enabled="trx" Click="() => PCFile()">Create PC File</DxButton>
 <DxPopup Visible="@popup" HeaderText="@popheader" Closing="warningClosed">
 
@@ -223,11 +224,6 @@
         NewDetail.Amount = amt;
         calcTax();
     }
-    public void TaxEntered(decimal amt)
-    {
-        NewDetail.Tax = amt;
-        calcTax();
-    }
     public void calcTax()
     {
         // Get constants from setting table
@@ -259,10 +255,6 @@
         gstStr = String.Format(new CultureInfo("en-CA"), "{0:C}", GSTRec);
         pstStr = String.Format(new CultureInfo("en-CA"), "{0:C}", PSTRec);
 
-    }
-    public void HSTEntered(decimal amt)
-    {
-        NewDetail.Tax = hst;
     }
     public void dateSelected(DateTime? selectedDate)
     {
@@ -317,6 +309,7 @@
 
     public void SavePMTDetail()
     {
+        calcTax();
         NewDetail.Account = SelAcct.Id;
         NewDetail.TransactionId = TransID;
         NewDetail.Filename = Filename;

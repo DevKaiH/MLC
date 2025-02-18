@@ -1,0 +1,164 @@
+﻿.page[b-g2wxyu51iq] {
+    height: 100%;
+    font-family: var(--bs-font-sans-serif);
+}
+
+[b-g2wxyu51iq] .navigation-drawer > .dxbl-drawer-panel {
+    background-image: linear-gradient(180deg, var(--bs-primary) 0%, var(--bs-black) 150%);
+}
+
+[b-g2wxyu51iq] .dxbl-drawer .dxbl-drawer-content {
+    height: 100vh;
+}
+
+[b-g2wxyu51iq] .dxbl-drawer > .dxbl-drawer-panel .dxbl-drawer-header {
+    border-bottom: none;
+    padding: 2rem 1rem;
+}
+
+[b-g2wxyu51iq] .dxbl-drawer-panel .dxbl-drawer-header .navigation-drawer-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+[b-g2wxyu51iq] .dxbl-drawer > .dxbl-drawer-panel > .dxbl-drawer-body {
+    --dxbl-drawer-panel-body-padding-x: 0;
+    --dxbl-drawer-panel-body-padding-y: 1rem;
+}
+
+[b-g2wxyu51iq] .dxbl-drawer > .dxbl-drawer-panel .dxbl-drawer-footer {
+    --dxbl-drawer-panel-footer-justify-content: center;
+    border-top: none;
+    padding-bottom: 1.5rem;
+}
+
+[b-g2wxyu51iq] .content {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+[b-g2wxyu51iq] .icon {
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    -webkit-mask-mask-position: center center;
+    width: 1rem;
+    height: 1rem;
+    background-repeat: no-repeat;
+    background-color: var(--dxbl-btn-color);
+}
+
+[b-g2wxyu51iq] .icon-back {
+    -webkit-mask-image: url("images/back.svg");
+    mask-image: url("images/back.svg");
+}
+
+[b-g2wxyu51iq] .icon-close {
+    -webkit-mask-image: url("images/close.svg");
+    mask-image: url("images/close.svg");
+}
+
+[b-g2wxyu51iq] .icon-menu {
+    -webkit-mask-image: url("images/menu.svg");
+    mask-image: url("images/menu.svg");
+}
+
+[b-g2wxyu51iq] .icon-log-in {
+    -webkit-mask-image: url("images/account/log-in.svg");
+    mask-image: url("images/account/log-in.svg");
+}
+
+[b-g2wxyu51iq] .icon-log-out {
+    -webkit-mask-image: url("images/account/log-out.svg");
+    mask-image: url("images/account/log-out.svg");
+}
+
+[b-g2wxyu51iq] .icon-user {
+    -webkit-mask-image: url("images/account/user.svg");
+    mask-image: url("images/account/user.svg");
+}
+
+[b-g2wxyu51iq] .docs-icon {
+    mask-image: url("images/doc.svg");
+    -webkit-mask-image: url("images/doc.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    background-color: var(--dxbl-btn-color);
+}
+
+[b-g2wxyu51iq] .demos-icon {
+    mask-image: url("images/demos.svg");
+    -webkit-mask-image: url("images/demos.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    background-color: var(--dxbl-btn-color);
+}
+
+[b-g2wxyu51iq] .footer-button:hover .demos-icon {
+    background-color: var(--dxbl-btn-hover-color);
+}
+
+[b-g2wxyu51iq] .footer-button:hover .docs-icon {
+    background-color: var(--dxbl-btn-hover-color);
+}
+
+[b-g2wxyu51iq] .menu-button:hover .icon {
+    background-color: var(--dxbl-btn-hover-color);
+}
+
+[b-g2wxyu51iq] .menu-button-nav:hover .icon {
+    background-color: var(--dxbl-btn-hover-color);
+}
+
+.panel-open .menu-button[b-g2wxyu51iq] {
+    display: inline-flex;
+}
+
+.menu-button-nav[b-g2wxyu51iq] {
+    background-image: url("images/close.svg");
+    width: 1.875rem;
+    height: 1.875rem;
+}
+
+.nav-buttons-container[b-g2wxyu51iq] {
+    display: flex;
+    gap: 10px;
+    padding: 2rem 1rem;
+}
+
+    .nav-buttons-container[b-g2wxyu51iq]  .menubutton-float-end {
+        margin-left: auto;
+    }
+
+    .nav-buttons-container[b-g2wxyu51iq]  .dxbl-btn-icon-only {
+        --dxbl-btn-padding-x: 0.75rem;
+        --dxbl-btn-padding-y: 0.25rem;
+    }
+
+[b-g2wxyu51iq] .navigation-drawer > .dxbl-drawer-panel {
+    display: flex;
+}
+
+[b-g2wxyu51iq] .navigation-drawer.mobile > .dxbl-drawer-panel {
+    display: none;
+}
+
+[b-g2wxyu51iq] .navigation-drawer.mobile > .dxbl-drawer-shading {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    [b-g2wxyu51iq] .navigation-drawer > .dxbl-drawer-panel {
+        display: none;
+    }
+
+    [b-g2wxyu51iq] .navigation-drawer.mobile > .dxbl-drawer-panel {
+        display: flex;
+    }
+
+    [b-g2wxyu51iq] .navigation-drawer.mobile > .dxbl-drawer-shading {
+        display: block;
+    }
+}
