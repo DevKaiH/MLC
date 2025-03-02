@@ -16,7 +16,7 @@ namespace MLC.Services
         }
         public IEnumerable<TblAccount> GetAccounts()
         {
-            return _context.TblAccounts;
+            return _context.TblAccounts.OrderBy(o => o.Description);
         }
     }
 }

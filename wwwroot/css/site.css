@@ -140,6 +140,9 @@ html, body {
     flex-direction: column;
     gap: 0.625rem;
 }
+.ch-480 {
+    height: 480px;
+}
 
 .info-message::before {
     content: '';

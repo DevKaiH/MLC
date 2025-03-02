@@ -11,11 +11,14 @@ HighlightRowOnHover="true">
 
     <Columns>
         <DxGridDataColumn FieldName="Description" />
-        <DxGridDataColumn FieldName="Gst" />
-        <DxGridDataColumn FieldName="Pst" />
-        <DxGridDataColumn FieldName="Amount" />
+        <DxGridDataColumn FieldName="Gst" DisplayFormat="c" />
+        <DxGridDataColumn FieldName="Pst" DisplayFormat="c" />
+        <DxGridDataColumn FieldName="Amount" DisplayFormat="c" />
         <DxGridCommandColumn VisibleIndex="3" EditButtonVisible="false" NewButtonVisible="false" />
     </Columns>
+    <TotalSummary>
+        <DxGridSummaryItem SummaryType="GridSummaryItemType.Sum" FieldName="Amount" />
+    </TotalSummary>
 
 </DxGrid>
 @code
