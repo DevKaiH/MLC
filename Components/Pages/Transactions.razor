@@ -22,6 +22,14 @@
 <PageTitle>Transactions</PageTitle>
 
 <DxFormLayout>
+    <DxFormLayoutItem Caption="Working Period" ColSpanSm="4">
+        <DxComboBox TData="Periods"
+        TValue="Periods"
+        Data="@PeriodDS"
+        TextFieldName="@(nameof(Periods.Period))"
+        ValueChanged="@((Periods selPeriod) => LoadTrans(selPeriod))">
+        </DxComboBox>
+    </DxFormLayoutItem>
     <DxFormLayoutItem Caption="Transaction Type" ColSpanSm="3">
         <DxComboBox 
         TData="Trantype"
@@ -31,30 +39,7 @@
         ValueChanged="@((Trantype selType) => TypeSelected(selType))">
         </DxComboBox>
     </DxFormLayoutItem>
-
-    <DxFormLayoutItem Caption="Report Period" ColSpanSm="3">
-        <DxComboBox 
-        TData="Periods"
-        TValue="Periods"
-        Data="@PeriodDS" 
-        TextFieldName="@(nameof(Periods.Period))"
-        ValueChanged="@((Periods selPeriod) => LoadTrans(selPeriod))">
-        </DxComboBox>
-    </DxFormLayoutItem>
-
-    <DxFormLayoutItem Caption="Date" ColSpanSm="3" >
-        <DxDateEdit 
-        NullText="Select Date..." 
-        Date="Transactiondate" 
-        Enabled="!DataComplete" 
-        DateChanged="@((DateTime selectedValue) => dateSelected(selectedValue))" />
-    </DxFormLayoutItem>
-
-    <DxFormLayoutItem Caption="Memo" ColSpanSm="3" >
-        <DxTextBox Enabled="!DataComplete"@bind-Text="@NewTrans.Memo" />
-    </DxFormLayoutItem>
-
-    <DxFormLayoutItem Caption="Bank Account" ColSpanSm="3">
+    <DxFormLayoutItem Caption="Bank Account" ColSpanSm="4">
         <ChildContent Context="accountContext">
             <DxComboBox TData="TblAccount" Enabled="!DataComplete"
             TValue="TblAccount"
@@ -63,10 +48,22 @@
             ValueChanged="@((TblAccount selAcct) => BankSelected(selAcct))"
             Value="SelBank" />
         </ChildContent>
+    </DxFormLayoutItem>   
+
+    <DxFormLayoutItem Caption="Transaction Date" ColSpanSm="3" >
+        <DxDateEdit 
+        NullText="Select Date..." 
+        Date="Transactiondate" 
+        Enabled="!DataComplete" 
+        DateChanged="@((DateTime selectedValue) => dateSelected(selectedValue))" />
     </DxFormLayoutItem>
-    @if (TTypeSelected && SelTType.Transactioncode == "E")
+
+    <DxFormLayoutItem Caption="Description" ColSpanSm="3" >
+        <DxTextBox Enabled="!DataComplete"@bind-Text="@NewTrans.Memo" />
+    </DxFormLayoutItem>
+    @if (TTypeSelected)
     {
-        <DxFormLayoutItem Caption="Account" ColSpanSm="3">
+        <DxFormLayoutItem Caption="Account" ColSpanSm="6">
             <ChildContent Context="anotherAccountContext">
                 <DxComboBox TData="TblAccount"
                 TValue="TblAccount"
@@ -125,30 +122,20 @@
                     </DxSpinEdit>
 
                 </ChildContent>
-            </DxFormLayoutItem>
-
-            <DxFormLayoutItem Caption="GST Recoverable" ColSpanSm="3">
-                <ChildContent Context="gstContext">
-                    <DxTextBox @bind-Text="@gstStr" />
-                </ChildContent>
-            </DxFormLayoutItem>
-
-            <DxFormLayoutItem Caption="PST Recoverable" ColSpanSm="3">
-                <ChildContent Context="pstContext">
-                    <DxTextBox @bind-Text="@pstStr" />
-                </ChildContent>
+            </DxFormLayoutItem>            
+        }
+        @if (TTypeSelected && SelTType.Transactioncode == "E")
+        {
+            <DxFormLayoutItem Caption="Detail Description" ColSpanSm="3">
+                <DxTextBox Text="@NewDetail.Description" TextChanged="@OnDescriptionChanged" />
             </DxFormLayoutItem>
         }
-        <DxFormLayoutItem Caption="Detail Description" ColSpanSm="3">
-            <DxTextBox Text="@NewDetail.Description" TextChanged="@OnDescriptionChanged" />
-        </DxFormLayoutItem>
     }
 
 </DxFormLayout>
 
 @if (trx)
 {
-
     <DxGrid Data="TransDS"
     CssClass="ch-480"
     DataItemDeleting="DeleteTransaction" 
@@ -158,7 +145,7 @@
     VirtualScrollingEnabled="true"
     FilterMenuButtonDisplayMode="GridFilterMenuButtonDisplayMode.Always"
     ShowSearchBox="true" ColumnResizeMode="GridColumnResizeMode.NextColumn"
-    AllowSelectRowByClick="true"  PageSize="15"
+    AllowSelectRowByClick="true"  
     HighlightRowOnHover="true">
 
         <Columns>
@@ -263,7 +250,7 @@
 
     public IEnumerable<Trantype> trantypes = new List<Trantype>()
     {
-     new Trantype{Transactiontype="Income",Transactioncode="I"},
+     new Trantype{Transactiontype="Contribution",Transactioncode="I"},
      new Trantype{Transactiontype="Expense",Transactioncode="E"},
     };
 
@@ -271,6 +258,7 @@
     {
         SelTType = Seltype;
         TTypeSelected = true;
+        NewTrans.Memo = Seltype.Transactiontype;
     }
 
     protected override void OnInitialized()
@@ -329,6 +317,11 @@
         if(SelTType.Transactioncode=="E")
         {
             calcTax();
+        }
+
+        if(SelTType.Transactioncode == "I")
+        {
+            DetailComplete = true;
         }
     }
     public void calcTax()
@@ -411,8 +404,7 @@
         if(TransID == 0)
         {
             Message = "An Error occured saving your transaction";
-        }        
-        NewTrans = new TblTransaction();
+        }               
     }
 
     public void SavePMTDetail()
@@ -452,6 +444,7 @@
             SelBank = null;           
             DataComplete = false;
             DetailSaved = false;
+            NewTrans = new TblTransaction();
         }
 
         // partial reset values
