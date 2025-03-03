@@ -6,9 +6,10 @@ namespace MLC.Services
 {
     public interface ITRANSSVC
     {
-        IEnumerable<TblTransaction> GetList();
-        IEnumerable<TblTransactionDetail> GetDetails(int TransID);        
-        public Totals GetTotals(int month, int year);
+        IEnumerable<TblTransaction> GetList(Periods period);
+        IEnumerable<TblTransactionDetail> GetDetails(int TransID);
+        IEnumerable<Periods> GetPeriods();
+        public Totals GetTotals(Periods period);
         public int AddTransaction(TblTransaction Transaction);
         public string AddDetail(TblTransactionDetail Detail);
         public string DeleteTransaction(TblTransaction delpmt);
@@ -22,10 +23,11 @@ namespace MLC.Services
             _context = context;
         }
 
-        public IEnumerable<TblTransaction> GetList()
+        public IEnumerable<TblTransaction> GetList(Periods period)
         {
             var transactions = from t in _context.TblTransactions
                                join td in _context.TblTransactionDetails on t.Id equals td.TransactionId into transactionDetails
+                               where t.Transactiondate.Month == period.Month && t.Transactiondate.Year == period.Year
                                select new TblTransaction
                                {
                                    Id = t.Id,
@@ -40,12 +42,12 @@ namespace MLC.Services
 
             return transactions.ToList();
         }
-        public Totals GetTotals(int month, int year)
+        public Totals GetTotals(Periods period)
         {
             var transactionTotals = (from td in _context.TblTransactionDetails
                                      join t in _context.TblTransactions on td.TransactionId equals t.Id
                                      join a in _context.TblAccounts on td.Account equals a.Id
-                                     where t.Transactiondate.Month == month && t.Transactiondate.Year == year
+                                     where t.Transactiondate.Month == period.Month && t.Transactiondate.Year == period.Year
                                      group td by a.Type into g
                                      select new
                                      {
@@ -61,6 +63,21 @@ namespace MLC.Services
             };
 
             return totals;
+        }
+
+        public IEnumerable<Periods> GetPeriods()
+        {
+            var periodTable = (from t in _context.TblTransactions
+                               group t by new { t.Transactiondate.Month, t.Transactiondate.Year } into g
+                               select new Periods
+                               {
+                                   Month = g.Key.Month,
+                                   Year = g.Key.Year,
+                                   Period = new DateTime(g.Key.Year, g.Key.Month, 1).ToString("MMMM yyyy")
+                               }).OrderBy(p => p.Year).ThenBy(p => p.Month).ToList();
+
+            return periodTable;
+        
         }
         public IEnumerable<TblTransactionDetail>GetDetails(int TransID)
         {

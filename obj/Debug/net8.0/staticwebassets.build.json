@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qCwbXPEf0rzC0W5HBLXm/Cem8eZAxQqtWk+MKenNveU=",
+  "Hash": "poXwOVymckR1zvEvhRvf6o1wH1Ex5cFb3Hc+c3aQ5dU=",
   "Source": "MLC",
   "BasePath": "_content/MLC",
   "Mode": "Default",
@@ -4567,8 +4567,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "4ml8dammlg",
-      "Integrity": "lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=",
+      "Fingerprint": "lrfi77wpfv",
+      "Integrity": "UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css"
@@ -4588,8 +4588,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "4ml8dammlg",
-      "Integrity": "lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=",
+      "Fingerprint": "lrfi77wpfv",
+      "Integrity": "UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css"
@@ -4840,8 +4840,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "76c0y7fq8s",
-      "Integrity": "YXThQzCmPweQ2S02CYyhTw2ip1zqXiUfilfPdlkHHXY=",
+      "Fingerprint": "iqf9tzmfhy",
+      "Integrity": "Fn+TOaSOlzOIZEwJX4K0d9jMGIT4S/xSsh2c+iFwBec=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -14268,51 +14268,6 @@
       ]
     },
     {
-      "Route": "css/site.76c0y7fq8s.css",
-      "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4228"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"YXThQzCmPweQ2S02CYyhTw2ip1zqXiUfilfPdlkHHXY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 01 Mar 2025 21:27:29 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "76c0y7fq8s"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-YXThQzCmPweQ2S02CYyhTw2ip1zqXiUfilfPdlkHHXY="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -14331,11 +14286,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"YXThQzCmPweQ2S02CYyhTw2ip1zqXiUfilfPdlkHHXY=\""
+          "Value": "\"Fn+TOaSOlzOIZEwJX4K0d9jMGIT4S/xSsh2c+iFwBec=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 01 Mar 2025 21:27:29 GMT"
+          "Value": "Sun, 02 Mar 2025 20:57:18 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -14345,7 +14300,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-YXThQzCmPweQ2S02CYyhTw2ip1zqXiUfilfPdlkHHXY="
+          "Value": "sha256-Fn+TOaSOlzOIZEwJX4K0d9jMGIT4S/xSsh2c+iFwBec="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.iqf9tzmfhy.css",
+      "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4228"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Fn+TOaSOlzOIZEwJX4K0d9jMGIT4S/xSsh2c+iFwBec=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Mar 2025 20:57:18 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "iqf9tzmfhy"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Fn+TOaSOlzOIZEwJX4K0d9jMGIT4S/xSsh2c+iFwBec="
         }
       ]
     },
@@ -16400,96 +16400,6 @@
       ]
     },
     {
-      "Route": "MLC.4ml8dammlg.bundle.scp.css",
-      "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "10515"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 01:23:09 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4ml8dammlg"
-        },
-        {
-          "Name": "label",
-          "Value": "MLC.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI="
-        }
-      ]
-    },
-    {
-      "Route": "MLC.4ml8dammlg.styles.css",
-      "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "10515"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 01:23:09 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4ml8dammlg"
-        },
-        {
-          "Name": "label",
-          "Value": "MLC.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI="
-        }
-      ]
-    },
-    {
       "Route": "MLC.bundle.scp.css",
       "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css",
       "Selectors": [],
@@ -16500,7 +16410,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10515"
+          "Value": "10345"
         },
         {
           "Name": "Content-Type",
@@ -16508,11 +16418,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=\""
+          "Value": "\"UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 01:23:09 GMT"
+          "Value": "Mon, 03 Mar 2025 02:51:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16522,7 +16432,97 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI="
+          "Value": "sha256-UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0="
+        }
+      ]
+    },
+    {
+      "Route": "MLC.lrfi77wpfv.bundle.scp.css",
+      "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MLC.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10345"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Mar 2025 02:51:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lrfi77wpfv"
+        },
+        {
+          "Name": "label",
+          "Value": "MLC.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0="
+        }
+      ]
+    },
+    {
+      "Route": "MLC.lrfi77wpfv.styles.css",
+      "AssetFile": "C:\\Users\\kai\\source\\repos\\MLC\\obj\\Debug\\net8.0\\scopedcss\\bundle\\MLC.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10345"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Mar 2025 02:51:05 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lrfi77wpfv"
+        },
+        {
+          "Name": "label",
+          "Value": "MLC.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0="
         }
       ]
     },
@@ -16537,7 +16537,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10515"
+          "Value": "10345"
         },
         {
           "Name": "Content-Type",
@@ -16545,11 +16545,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI=\""
+          "Value": "\"UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 01:23:09 GMT"
+          "Value": "Mon, 03 Mar 2025 02:51:05 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16559,7 +16559,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-lGtI01VuvdCOy/mhmWYGDB1kDRA8oMxg5onRKlWw0iI="
+          "Value": "sha256-UUMs/NrCBuhkOzFvEHwQ/JbMxcghxYHrC6naRckq9B0="
         }
       ]
     }

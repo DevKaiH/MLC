@@ -164,17 +164,12 @@
 .nav-buttons-container[b-g2wxyu51iq] {
     display: flex;
     gap: 10px;
-    padding: 2rem 1rem;
+   
 }
 
     .nav-buttons-container[b-g2wxyu51iq]  .menubutton-float-end {
         margin-left: auto;
-    }
-
-    .nav-buttons-container[b-g2wxyu51iq]  .dxbl-btn-icon-only {
-        --dxbl-btn-padding-x: 0.75rem;
-        --dxbl-btn-padding-y: 0.25rem;
-    }
+    }    
 
 [b-g2wxyu51iq] .navigation-drawer > .dxbl-drawer-panel {
     display: flex;

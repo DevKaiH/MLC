@@ -8,9 +8,8 @@ public partial class TblTransactionDetail
     public int Id { get; set; }
 
     public int TransactionId { get; set; }
-
     public int? Account { get; set; }
-
+    public int? Member { get; set; }
     public decimal? Amount { get; set; }
 
     public string? Description { get; set; }

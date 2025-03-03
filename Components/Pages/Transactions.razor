@@ -15,15 +15,39 @@
 @inject IJSRuntime JSRuntime
 @inject IPCFileSVC PC
 @inject IsettingsSVC SS
+@inject IMemberSVC Member
 
 <script src="js/file-utils.js"></script>
 
 <PageTitle>Transactions</PageTitle>
 
 <DxFormLayout>
+    <DxFormLayoutItem Caption="Transaction Type" ColSpanSm="3">
+        <DxComboBox 
+        TData="Trantype"
+        TValue="Trantype"
+        Data="@trantypes"
+        TextFieldName="@(nameof(Trantype.Transactiontype))"
+        ValueChanged="@((Trantype selType) => TypeSelected(selType))">
+        </DxComboBox>
+    </DxFormLayoutItem>
+
+    <DxFormLayoutItem Caption="Report Period" ColSpanSm="3">
+        <DxComboBox 
+        TData="Periods"
+        TValue="Periods"
+        Data="@PeriodDS" 
+        TextFieldName="@(nameof(Periods.Period))"
+        ValueChanged="@((Periods selPeriod) => LoadTrans(selPeriod))">
+        </DxComboBox>
+    </DxFormLayoutItem>
 
     <DxFormLayoutItem Caption="Date" ColSpanSm="3" >
-        <DxDateEdit NullText="Select Date..." Date="Transactiondate" Enabled="!DataComplete" DateChanged="@((DateTime selectedValue) => dateSelected(selectedValue))" />
+        <DxDateEdit 
+        NullText="Select Date..." 
+        Date="Transactiondate" 
+        Enabled="!DataComplete" 
+        DateChanged="@((DateTime selectedValue) => dateSelected(selectedValue))" />
     </DxFormLayoutItem>
 
     <DxFormLayoutItem Caption="Memo" ColSpanSm="3" >
@@ -40,22 +64,43 @@
             Value="SelBank" />
         </ChildContent>
     </DxFormLayoutItem>
-
-    <DxFormLayoutItem Caption="Account" ColSpanSm="3">
-        <ChildContent Context="anotherAccountContext">
-            <DxComboBox TData="TblAccount"
-            TValue="TblAccount"
-            Data="@AccountDS"
-            TextFieldName="@(nameof(TblAccount.Description))"
-            NullText="Select Account..."
-            Value="SelAcct"
-            ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
-            ValueExpression="@( () => SelAcct )"
-            FilteringMode="DataGridFilteringMode.Contains"
-            TextExpression="@( () => SelAcct.Description )"/>               
-        </ChildContent>
-    </DxFormLayoutItem>
-
+    @if (TTypeSelected && SelTType.Transactioncode == "E")
+    {
+        <DxFormLayoutItem Caption="Account" ColSpanSm="3">
+            <ChildContent Context="anotherAccountContext">
+                <DxComboBox TData="TblAccount"
+                TValue="TblAccount"
+                Data="@AccountDS.Where(t => t.Type == SelTType.Transactioncode)"
+                TextFieldName="@(nameof(TblAccount.Description))"
+                NullText="Select Account..."
+                Value="SelAcct"
+                ValueChanged="@((TblAccount selectedAcct) => AcctSelected(selectedAcct))"
+                ValueExpression="@( () => SelAcct )"
+                FilteringMode="DataGridFilteringMode.Contains"
+                TextExpression="@( () => SelAcct.Description )"/>               
+            </ChildContent>
+        </DxFormLayoutItem>
+    }
+    @if (TTypeSelected && SelTType.Transactioncode == "I")
+    {
+        <DxFormLayoutItem Caption="Member" ColSpanSm="6">
+            <ChildContent Context="anotherMemberContext">
+                <DxComboBox 
+                Data="@MemberDS"
+                NullText="Select Member..."
+                Value="SelMember"
+                ValueChanged="@((TblMember selectedMember) => MemberSelected(selectedMember))"
+                EditFormat="{0} {1}"
+                SearchMode="@ListSearchMode.AutoSearch"
+                SearchFilterCondition="@ListSearchFilterCondition.Contains">
+                    <Columns>
+                        <DxListEditorColumn FieldName="@nameof(TblMember.Firstname)" Caption="First Name" />
+                        <DxListEditorColumn FieldName="@nameof(TblMember.Lastname)" Caption="Last Name" />        
+                    </Columns>
+                </DxComboBox>
+            </ChildContent>
+        </DxFormLayoutItem>
+    }
     @if (DataComplete)
 
     {
@@ -68,92 +113,100 @@
                 <DxNumericMaskProperties Culture="@Culture" />
             </DxSpinEdit>
         </DxFormLayoutItem>
+        @if(SelTType.Transactioncode=="E"){
+            <DxFormLayoutItem Caption="HST" ColSpanSm="3">
+                <ChildContent Context="hstContext">
+                    <DxSpinEdit @bind-Value="@hst"                           
+                    Mask="@NumericMask.Currency"
+                    Increment="100"
+                    CssClass="cw-320"
+                    InputId="seMask">
+                        <DxNumericMaskProperties Culture="@Culture" />
+                    </DxSpinEdit>
 
-        <DxFormLayoutItem Caption="HST" ColSpanSm="3">
-            <ChildContent Context="hstContext">
-                <DxSpinEdit @bind-Value="@hst"                           
-                Mask="@NumericMask.Currency"
-                Increment="100"
-                CssClass="cw-320"
-                InputId="seMask">
-                    <DxNumericMaskProperties Culture="@Culture" />
-                </DxSpinEdit>
+                </ChildContent>
+            </DxFormLayoutItem>
 
-            </ChildContent>
-        </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="GST Recoverable" ColSpanSm="3">
+                <ChildContent Context="gstContext">
+                    <DxTextBox @bind-Text="@gstStr" />
+                </ChildContent>
+            </DxFormLayoutItem>
 
-        <DxFormLayoutItem Caption="GST Recoverable" ColSpanSm="3">
-            <ChildContent Context="gstContext">
-                <DxTextBox @bind-Text="@gstStr" />
-            </ChildContent>
-        </DxFormLayoutItem>
-
-        <DxFormLayoutItem Caption="PST Recoverable" ColSpanSm="3">
-            <ChildContent Context="pstContext">
-                <DxTextBox @bind-Text="@pstStr" />
-            </ChildContent>
-        </DxFormLayoutItem>
-
+            <DxFormLayoutItem Caption="PST Recoverable" ColSpanSm="3">
+                <ChildContent Context="pstContext">
+                    <DxTextBox @bind-Text="@pstStr" />
+                </ChildContent>
+            </DxFormLayoutItem>
+        }
         <DxFormLayoutItem Caption="Detail Description" ColSpanSm="3">
             <DxTextBox Text="@NewDetail.Description" TextChanged="@OnDescriptionChanged" />
         </DxFormLayoutItem>
+    }
 
-        <DxFormLayoutItem Caption="Upload Receipt">
-            <div class="upload-container">
-                <div style="@(SelectedFilesCount > 0 ? "display: none" : string.Empty)">
-                    <span class="drop-file-icon mb-3"></span>
-                    <span class="drop-file-label mb-3">Click the Select File button to select files</span>
-                </div>
-                <DxFileInput AllowMultiFileUpload="true"
-                SelectedFilesChanged="@SelectedFilesChanged"
-                MaxFileSize="15000000"
-                FilesUploading="OnFilesUploading">
-                </DxFileInput>
-            </div>
-        </DxFormLayoutItem>
-        }
-        <DxFormLayoutItem Caption = "Total Credit" ColSpanSm="3">
-            <ChildContent>
-                <DxTextBox Text="@string.Format("{0:C}", Ttl.TotalIncome)" />
-            </ChildContent>
-        </DxFormLayoutItem>
-        <DxFormLayoutItem Caption="Total Debit" ColSpanSm="3">
-            <ChildContent>
-                <DxTextBox Text="@string.Format("{0:C}", Ttl.TotalExpense)" />
-            </ChildContent>
-        </DxFormLayoutItem>
-    
 </DxFormLayout>
+
+@if (trx)
+{
+
+    <DxGrid Data="TransDS"
+    CssClass="ch-480"
+    DataItemDeleting="DeleteTransaction" 
+    TextWrapEnabled="false" 
+    AutoExpandAllGroupRows="true"
+    PagerVisible="false"
+    VirtualScrollingEnabled="true"
+    FilterMenuButtonDisplayMode="GridFilterMenuButtonDisplayMode.Always"
+    ShowSearchBox="true" ColumnResizeMode="GridColumnResizeMode.NextColumn"
+    AllowSelectRowByClick="true"  PageSize="15"
+    HighlightRowOnHover="true">
+
+        <Columns>
+            <DxGridDataColumn FieldName="Memo" VisibleIndex="1" />
+            <DxGridDataColumn FieldName="Transactiondate" VisibleIndex="0" />
+            <DxGridDataColumn FieldName="Total" DisplayFormat="c" VisibleIndex="2" />
+            <DxGridCommandColumn VisibleIndex="3" EditButtonVisible="false" NewButtonVisible="false" />
+        </Columns>
+        <DetailRowTemplate>
+            <TransactionDetails Transaction="@((context.DataItem as TblTransaction).Id)" />        
+        </DetailRowTemplate>
+    </DxGrid>
+
+    @if (trx)
+    {
+        <DxFormLayout>
+            <DxFormLayoutItem Caption="Total Credit" ColSpanSm="3">
+                <ChildContent>
+                    <DxTextBox Text="@string.Format("{0:C}", Ttl.TotalIncome)" />
+                </ChildContent>
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Total Debit" ColSpanSm="3">
+                <ChildContent>
+                    <DxTextBox Text="@string.Format("{0:C}", Ttl.TotalExpense)" />
+                </ChildContent>
+            </DxFormLayoutItem>
+        </DxFormLayout>
+    }
+}
 
 <DxButton Enabled="DetailComplete" Click="SavePMTDetail">Save Detail</DxButton>
 <DxButton Enabled="DetailSaved" Click="() => ClearForm(true)">New Transaction</DxButton>
 <DxButton Enabled="trx" Click="() => PCFile()">Create PC File</DxButton>
 
-
-<DxGrid Data="TransDS"
-CssClass="ch-480"
-DataItemDeleting="DeleteTransaction" 
-ShowGroupPanel="true" 
-TextWrapEnabled="false" 
-AutoExpandAllGroupRows="true"
-PagerVisible="false"
-VirtualScrollingEnabled="true"
-FilterMenuButtonDisplayMode="GridFilterMenuButtonDisplayMode.Always"
-ShowSearchBox="true" ColumnResizeMode="GridColumnResizeMode.NextColumn"
-AllowSelectRowByClick="true"  PageSize="15"
-HighlightRowOnHover="true">
-
-    <Columns>
-        <DxGridDataColumn FieldName="Memo" VisibleIndex="1" />
-        <DxGridDataColumn FieldName="Transactiondate" VisibleIndex="0" />
-        <DxGridDataColumn FieldName="Total" DisplayFormat="c" VisibleIndex="2" />
-        <DxGridCommandColumn VisibleIndex="3" EditButtonVisible="false" NewButtonVisible="false" />
-    </Columns>
-    <DetailRowTemplate>
-        <TransactionDetails Transaction="@((context.DataItem as TblTransaction).Id)" />        
-    </DetailRowTemplate>
-</DxGrid>
-
+@if (DataComplete)
+{
+    <div class="upload-container">
+        <div style="@(SelectedFilesCount > 0 ? "display: none" : string.Empty)">
+            <span class="drop-file-icon mb-3"></span>
+            <span class="drop-file-label mb-3">Click the Select File button to select files</span>
+        </div>
+        <DxFileInput AllowMultiFileUpload="true"
+        SelectedFilesChanged="@SelectedFilesChanged"
+        MaxFileSize="15000000"
+        FilesUploading="OnFilesUploading">
+        </DxFileInput>
+    </div>
+}
 <DxPopup Visible="@popup" HeaderText="@popheader" Closing="warningClosed">
 
     <BodyContentTemplate>
@@ -170,7 +223,10 @@ HighlightRowOnHover="true">
     public IEnumerable<TblTransaction>? TransDS { get; set; }
     public IEnumerable<TblTransactionDetail>? DetailsDS { get; set; }
     public IEnumerable<TblSetting>? SettingDS { get; set; }
-    public Totals? Ttl { get; set; } 
+    public IEnumerable<Periods>? PeriodDS { get; set; }
+    public IEnumerable<TblMember>? MemberDS {get; set;}
+    public Totals? Ttl { get; set; }
+    bool TTypeSelected = false;
     bool DataComplete = false;
     bool DetailComplete = false;
     bool DetailSaved = false;
@@ -179,7 +235,7 @@ HighlightRowOnHover="true">
     string? popheader { get; set; }
     int SelectedFilesCount { get; set; }
     int TransID {get; set; }
-    DateTime Transactiondate { get; set; }
+    DateTime Transactiondate { get; set; } = DateTime.Now;
     decimal? hst { get; set;}
     decimal amt { get; set; }
     decimal gst { get; set; }
@@ -193,23 +249,44 @@ HighlightRowOnHover="true">
     private VRecipient? SelectedPerson;
     private TblAccount? SelAcct;
     private TblAccount? SelBank;
+    private Periods? SelPeriod;
+    private Trantype? SelTType;
+    private TblMember? SelMember;
     private System.Timers.Timer _timer;
     CultureInfo Culture = CultureInfo.GetCultureInfo("en-US");
+
+    public class Trantype
+    {
+        public string? Transactiontype { get; set; }
+        public string? Transactioncode { get; set; }
+    }
+
+    public IEnumerable<Trantype> trantypes = new List<Trantype>()
+    {
+     new Trantype{Transactiontype="Income",Transactioncode="I"},
+     new Trantype{Transactiontype="Expense",Transactioncode="E"},
+    };
+
+    private void TypeSelected(Trantype Seltype)
+    {
+        SelTType = Seltype;
+        TTypeSelected = true;
+    }
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
         AccountDS = Accounts.GetAccounts();
-        Reloadgrid();
-        if (TransDS.Count() > 0)
-        {
-            trx = true;
-            Ttl = Trans.GetTotals(12,2024);
-        }
-
+        PeriodDS = Trans.GetPeriods();  
         SettingDS = SS.GetTable();
-
+        MemberDS = Member.GetMemberlist();
     }  
+
+    private async Task LoadTrans(Periods SelectedPeriod)
+    {
+        SelPeriod = SelectedPeriod;
+        Loadgrid();
+    }
     private async Task startTimer()
     {
         _timer = new System.Timers.Timer(2000); // 2 seconds
@@ -226,17 +303,21 @@ HighlightRowOnHover="true">
      });
     }
 
-    public void Reloadgrid()
+    public void Loadgrid()
     {
-        TransDS = new List<TblTransaction>(Trans.GetList());
+        TransDS = new List<TblTransaction>(Trans.GetList(SelPeriod));
+        if (TransDS.Count() > 0)
+        {
+            trx = true;
+            Ttl = Trans.GetTotals(SelPeriod);
+        }
     }
-    
-    public void PersonSelected(VRecipient Person)
+    public void MemberSelected(TblMember SelectedMember)
     {
-        SelectedPerson = Person;
+        SelMember = SelectedMember;
+        DataComplete = true;
+    }
 
-        Reloadgrid();
-    }
     public void warningClosed()
     {
         popup = false;
@@ -245,7 +326,10 @@ HighlightRowOnHover="true">
     public void AmtEntered(decimal amt)
     {
         NewDetail.Amount = amt;
-        calcTax();
+        if(SelTType.Transactioncode=="E")
+        {
+            calcTax();
+        }
     }
     public void calcTax()
     {
@@ -313,7 +397,7 @@ HighlightRowOnHover="true">
 
             // reload grid
 
-            Reloadgrid();
+            Loadgrid();
         }
     }
     // Save new payment request
@@ -333,12 +417,21 @@ HighlightRowOnHover="true">
 
     public void SavePMTDetail()
     {
-        calcTax();
-        NewDetail.Account = SelAcct.Id;
+
+        if(SelTType.Transactioncode=="E")
+        {
+            calcTax();
+            NewDetail.Account = SelAcct.Id;
+        }
+        if (SelTType.Transactioncode == "I")
+        {
+            NewDetail.Member = SelMember.Id;
+        }  
+        
         NewDetail.TransactionId = TransID;
         NewDetail.Filename = Filename;
         Message = Trans.AddDetail(NewDetail);
-        Reloadgrid();
+        Loadgrid();
         popheader = "Detail Saved";
         popup = true;
         startTimer();

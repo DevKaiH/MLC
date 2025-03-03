@@ -40,6 +40,7 @@ public partial class MlcdataContext : DbContext
     public virtual DbSet<BMO> BMOs { get; set; }
 
     public virtual DbSet<PCFile> PCFiles { get; set; }
+    public virtual DbSet<TblMember> TblMembers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -149,6 +150,38 @@ public partial class MlcdataContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<TblMember>(entity =>
+        {
+            entity.ToTable("tblMembers");
+
+            entity.Property(e => e.Id)
+                .ValueGeneratedNever()
+                .HasColumnName("ID");
+            entity.Property(e => e.Addres1).HasMaxLength(50);
+            entity.Property(e => e.Address2).HasMaxLength(50);
+            entity.Property(e => e.City)
+                .HasMaxLength(50)
+                .HasColumnName("city");
+            entity.Property(e => e.Country)
+                .HasMaxLength(50)
+                .HasColumnName("country");
+            entity.Property(e => e.EMail)
+                .HasMaxLength(150)
+                .HasColumnName("e_mail");
+            entity.Property(e => e.EnvNo).HasColumnName("env_no");
+            entity.Property(e => e.Firstname)
+                .HasMaxLength(50)
+                .HasColumnName("firstname");
+            entity.Property(e => e.Lastname)
+                .HasMaxLength(50)
+                .HasColumnName("lastname");
+            entity.Property(e => e.Phone1)
+                .HasMaxLength(50)
+                .HasColumnName("phone1");
+            entity.Property(e => e.Postalcode).HasMaxLength(50);
+            entity.Property(e => e.Province).HasMaxLength(50);
+            entity.Property(e => e.Updated).HasColumnName("updated");
+        });
         modelBuilder.Entity<TblSetting>(entity =>
         {
             entity.ToTable("tblSettings");
@@ -210,30 +243,7 @@ public partial class MlcdataContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<TransBu>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("TransBU");
-
-            entity.Property(e => e.Account)
-                .HasMaxLength(12)
-                .IsUnicode(false);
-            entity.Property(e => e.AddUser)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Amount).HasColumnType("money");
-            entity.Property(e => e.Bankaccount)
-                .HasMaxLength(12)
-                .IsUnicode(false);
-            entity.Property(e => e.Filename)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
-            entity.Property(e => e.LogId).HasColumnName("LogID");
-            entity.Property(e => e.Memo).IsUnicode(false);
-            entity.Property(e => e.Transactiondate).HasColumnType("datetime");
-        });
+       
 
         modelBuilder.Entity<VRecipient>(entity =>
         {

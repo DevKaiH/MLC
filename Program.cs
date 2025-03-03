@@ -24,6 +24,7 @@ builder.Services.AddScoped<IPCFileSVC, PCFileSVC>();
 builder.Services.AddScoped<IBMOFileSVC, BMOFileSVC>();
 builder.Services.AddScoped<ITRANSSVC, TransSVC>();
 builder.Services.AddScoped<IsettingsSVC, SettingSVC>();
+builder.Services.AddScoped<IMemberSVC, MemberSVC>();
 
 var app = builder.Build();
 

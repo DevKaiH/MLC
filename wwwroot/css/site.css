@@ -141,7 +141,7 @@ html, body {
     gap: 0.625rem;
 }
 .ch-480 {
-    height: 480px;
+    height: 300px;
 }
 
 .info-message::before {
